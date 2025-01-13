@@ -351,6 +351,7 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                     <GridContainer>
                         {bestPromotions.map((item, index) => (
                             <PromotionCard key={index}>
+                                <div className="year">{item.year}</div>
                                 <img src={item.img} alt={item.title}/>
                                 <h4>{item.title}</h4>
                                 {item?.reservation && (
@@ -361,7 +362,6 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                                     {item.sale && (<span>[{item.sale}% 할인]</span>)}
                                 </strong>
                                 <p>{item.description}</p>
-                                <span>연식:{item.year}</span>
                                 <TagBox>
                                     {item.tag.map((tag, tagIndex) => (
                                         <span key={tagIndex} className={tag.class}>{tag.text}</span>
@@ -380,6 +380,7 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                     <GridContainer>
                         {premiumPromotions.map((item, index) => (
                             <PromotionCard key={index}>
+                                <div className="year">{item.year}</div>
                                 <img src={item.img} alt={item.title}/>
                                 <h4>{item.title}</h4>
                                 {item?.reservation && (
@@ -390,7 +391,6 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                                     {item.sale && (<span>[{item.sale}% 할인]</span>)}
                                 </strong>
                                 <p>{item.description}</p>
-                                <span>연식:{item.year}</span>
                                 <TagBox>
                                     {item.tag.map((tag, tagIndex) => (
                                         <span key={tagIndex} className={tag.class}>{tag.text}</span>
@@ -409,6 +409,7 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                     <GridContainer>
                         {salesPromotions.map((item, index) => (
                             <PromotionCard key={index}>
+                                <div className="year">{item.year}</div>
                                 <img src={item.img} alt={item.title}/>
                                 <h4>{item.title}</h4>
                                 {item?.reservation && (
@@ -419,7 +420,6 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                                     {item.sale && (<span>[{item.sale}% 할인]</span>)}
                                 </strong>
                                 <p>{item.description}</p>
-                                <span>연식:{item.year}</span>
                                 <TagBox>
                                     {item.tag.map((tag, tagIndex) => (
                                         <span key={tagIndex} className={tag.class}>{tag.text}</span>
@@ -468,21 +468,26 @@ const GridContainer = styled.div`
 `;
 
 const PromotionCard = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 1rem;
     border-radius: 15px;
     background-color: #ffffffff;
-    transition: .3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    perspective: 1000px;
 
-    & > img{
+    & > img {
         margin-bottom: 15px;
         width: 100%;
         object-fit: contain;
-        transition: .3s ease-in-out;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        will-change: transform, box-shadow;
+        transform-origin: center center;
     }
 
-    & > h4{
+    & > h4 {
         margin-bottom: 1rem;
         font-size: 1.15rem;
         font-weight: bold;
@@ -498,12 +503,12 @@ const PromotionCard = styled.div`
         color: var(--error-color);
     }
 
-    & > strong > span{
+    & > strong > span {
         margin-left: 0.3rem;
         font-size: 0.9rem;
     }
 
-    & > p{
+    & > p {
         margin-bottom: 5px;
         font-size: 0.9rem;
     }
@@ -513,21 +518,31 @@ const PromotionCard = styled.div`
         color: var(--error-color);
     }
 
-    & > span {
-        margin-bottom: 10px;
-        font-size: 0.9rem;
-        color: var(--border-color);
+    & > .year {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
     }
 
     &:hover {
         cursor: pointer;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
 
-        & > img{
-            transform: scale(1.1);
+        & > img {
+            transform: translateZ(50px) rotateX(-10deg);
         }
     }
-`
+`;
 
 const TagBox = styled.div`
     display: flex;
@@ -545,16 +560,19 @@ const TagBox = styled.div`
     & > span.normal{
         color: var(--primary-color);
         border: 1px solid var(--primary-color);
+        background-color: var(--primary-bg-color);
     }
 
     & > span.total,
     & > span.premiumTotal {
         color: var(--secondary-color);
         border: 1px solid var(--secondary-color);
+        background-color: var(--secondary-bg-color);
     }
 
     & > span.super{
         color: var(--error-color);
         border: 1px solid var(--error-color);
+        background-color: var(--error-bg-color);
     }
 `
