@@ -522,7 +522,6 @@ const PromotionCard = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
         padding: 15px;
         font-size: 1.2rem;
         font-weight: bold;
