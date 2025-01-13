@@ -1,0 +1,8 @@
+:root{
+    color: var(--font-color);
+    font-size: 1.1rem;
+
+    button{
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "typeRoots": ["./node_modules/@types", "./resources/js/types"],
+        "target": "ESNext",
+        "module": "ESNext",
+        "jsx": "react-jsx",
+        "moduleResolution": "Node",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["resources/js/*"]
+        }
+    },
+    "include": ["resources/js/**/*"],
+    "exclude": ["node_modules"]
+}

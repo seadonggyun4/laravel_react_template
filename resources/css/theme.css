@@ -1,0 +1,20 @@
+:root{
+    /* color */
+    --font-color: #2B2E33;
+    --font-secondary-color: #6C7380;
+    --primary-color: #00A1E5;
+    --secondary-color: #03d9f3;
+    --bg-color: rgb(247, 247, 249);
+    --border-color: #BEC2CC;
+    --border-secondary-color: #e0e0e0;
+    --disabled-color: #F0F2F5;
+    --success-color: #0ECB81;
+    --error-color: #E33B54;
+
+    /* size */
+    --section-width: 1280px;
+    --header-height: 128px;
+
+    /* zindex */
+    --header-zindex: 100;
+}
