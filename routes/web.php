@@ -5,8 +5,10 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('HomePage', [
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'meta' => [
+            'title' => 'Angelcar | 제주도 렌터카 서비스',
+            'description' => 'Angelcar: 제주도 최고의 렌터카 서비스. 다양한 차량 옵션과 최고의 서비스로 제주 여행을 더 편리하게 만드세요.',
+        ],
     ]);
 });
 
