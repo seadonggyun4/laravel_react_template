@@ -20,7 +20,7 @@ type Promotion = {
     img: string;
 };
 
-export default function HomePage({ laravelVersion, phpVersion } : {laravelVersion: string, phpVersion: string}) {
+export default function HomePage() {
     const Banner = '/assets/img/banner.jpeg';
 
     const bestPromotions: Promotion[] = [
@@ -430,8 +430,6 @@ export default function HomePage({ laravelVersion, phpVersion } : {laravelVersio
                     </GridContainer>
                 </PromotionWrapper>
             </PromotionSection>
-            <p>{laravelVersion}</p>
-            <p>{phpVersion}</p>
         </PageLayout>
     );
 }
