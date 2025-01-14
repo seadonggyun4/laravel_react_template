@@ -178,9 +178,11 @@ const NavContent = styled.div`
 
     @keyframes showMenuContent {
         from {
+            opacity: 0;
             height: 0;
         }
         to {
+            opacity: 1;
             height: 100%;
         }
     }

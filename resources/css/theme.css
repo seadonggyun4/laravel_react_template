@@ -18,6 +18,7 @@
     /* size */
     --section-width: 1280px;
     --header-height: 128px;
+    --nav-height: 137px;
 
     /* zindex */
     --header-zindex: 100;

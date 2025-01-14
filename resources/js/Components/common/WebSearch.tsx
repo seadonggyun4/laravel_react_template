@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
+import React, { useState, forwardRef } from "react";
+import ReactDatePicker, { DatePickerProps } from "react-datepicker";
 import { ko } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
+import '../../../css/module/datePicker.css'
 
 const WebSearchSection = () => {
     const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([new Date(), new Date()]);
@@ -53,7 +54,7 @@ const WebSearchSection = () => {
                                     checked={selectedType === type}
                                     onChange={() => setSelectedType(type)}
                                 />
-                                <VehicleTypeLabel htmlFor={type} isChecked={selectedType === type}>
+                                <VehicleTypeLabel htmlFor={type} $isChecked={selectedType === type}>
                                     {type}
                                 </VehicleTypeLabel>
                             </div>
@@ -86,16 +87,19 @@ const SearchBox = styled.div`
 const DataBox = styled.div`
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 50rem;
 `
 
 // StyledDatePicker
-const StyledDatePicker = styled(DatePicker)`
+const StyledDatePicker = styled(
+    forwardRef<ReactDatePicker, DatePickerProps>((props, ref) => (
+        <ReactDatePicker {...props} ref={ref} />
+    ))
+)<DatePickerProps>`
     padding: 1rem;
     width: 100%;
     border: 2px solid var(--primary-color);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-radius: 15px;
     font-size: 0.9rem;
     background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -118,13 +122,13 @@ const VehicleTypeSelecter = styled.div`
     background-color: #fff;
 `;
 
-const VehicleTypeLabel = styled.label<{ isChecked: boolean }>`
+const VehicleTypeLabel = styled.label<{ $isChecked: boolean }>`
     display: flex;
     align-items: center;
     padding: 10px;
     border-radius: 5px;
-    background-color: ${(props) => (props.isChecked ? "var(--secondary-color)" : "var(--disabled-color)")};
-    color: ${(props) => (props.isChecked ? "#ffffff" : "#000000")};
+    background-color: ${(props) => (props.$isChecked ? "var(--secondary-color)" : "var(--disabled-color)")};
+    color: ${(props) => (props.$isChecked ? "#ffffff" : "#000000")};
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
@@ -146,6 +150,7 @@ const SearchButton = styled.button`
     color: white;
     border-radius: 30px;
     transition: .3s ease-in-out;
+    font-size: 0.9rem;
 
     &:hover {
         background-color: var(--secondary-color);

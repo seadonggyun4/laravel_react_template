@@ -9,6 +9,7 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "resolveJsonModule": true,
+        "strictNullChecks": true,
         "baseUrl": ".",
         "paths": {
             "@/*": ["resources/js/*"]

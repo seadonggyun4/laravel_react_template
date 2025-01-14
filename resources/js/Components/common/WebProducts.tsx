@@ -10,7 +10,7 @@ interface WebProductsSectionProps {
     children: React.ReactNode;
 }
 
-const WebProductsSection: React.FC<WebProductsSectionProps> = ({ text, children }) => {
+const WebProducts: React.FC<WebProductsSectionProps> = ({ text, children }) => {
     return (
         <ProductSection>
             <ProductWrapper>
@@ -28,7 +28,7 @@ const WebProductsSection: React.FC<WebProductsSectionProps> = ({ text, children 
     );
 };
 
-export default WebProductsSection;
+export default WebProducts;
 
 const ProductSection = styled.section`
     display: flex;
