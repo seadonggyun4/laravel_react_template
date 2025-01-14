@@ -2,6 +2,11 @@
     color: var(--font-color);
     font-size: 1.1rem;
 
+    body{
+        background-color: var(--bg-color);
+        overflow-x: hidden;
+    }
+
     button{
         font-size: 0.8rem;
     }

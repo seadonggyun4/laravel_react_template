@@ -46,7 +46,10 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 632px;
-    height: 100%;
+    height: 80%;
+    padding: 0 3rem;
+    border-radius: 10px;
+    background-color: #ffffff;
 `;
 
 const Image = styled.img`

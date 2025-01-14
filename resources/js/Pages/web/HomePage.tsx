@@ -1,5 +1,5 @@
-import Panorama from "@/Components/common/Panorama";
-import Swiper from "@/Components/common/Swiper";
+import Panorama from "@/Components/widgets/Panorama";
+import Swiper from "@/Components/widgets/Swiper";
 import styled from "styled-components";
 import {setPrice} from "@/utils";
 import PageLayout from "@/Layouts/PageLayout";
@@ -440,7 +440,6 @@ const PromotionSection = styled.section`
     width: 100%;
     height: 100%;
     padding: 3rem 0;
-    background-color: var(--bg-color);
 `
 
 const PromotionWrapper = styled.article`

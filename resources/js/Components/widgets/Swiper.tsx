@@ -104,6 +104,7 @@ const SwiperSection = styled.section`
     height: 100%;
     margin: 0 auto;
     position: relative;
+    background-color: #ffffff;
 
     .swiper {
         width: 100%;
