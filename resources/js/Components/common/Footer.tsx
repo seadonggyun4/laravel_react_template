@@ -104,7 +104,7 @@ const Title = styled.h4`
 `;
 
 const Copyright = styled.div`
-    font-size: 0.8125rem;
+    font-size: 0.7125rem;
     color: var(--border-color);
     text-align: center;
 `;
