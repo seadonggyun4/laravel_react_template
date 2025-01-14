@@ -177,7 +177,7 @@ const TagBox = styled.div`
 
     @media (max-width: ${MOBILE_WIDTH}px) {
         & > span{
-            font-size: 0.7rem;
+            font-size: 0.8rem;
         }
     }
 `;

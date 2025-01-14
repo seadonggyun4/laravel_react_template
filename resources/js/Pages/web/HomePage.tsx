@@ -6,6 +6,7 @@ import WebProductCard from "@/Components/elements/WebProductCard";
 import {bestPromotions, premiumPromotions, salesPromotions} from "@/data";
 import WebProductsSection from "@/Components/common/WebProductsSection";
 import { MOBILE_WIDTH } from "@/constants";
+import WebSearSection from "@/Components/common/WebSearSection";
 
 export default function HomePage() {
     const Banner = '/assets/img/banner.jpeg';
@@ -13,6 +14,7 @@ export default function HomePage() {
     return (
         <PageLayout title="제주도렌트카 | 제주엔젤카">
             <Swiper/>
+            <WebSearSection />
             <WebProductsSection text={{
                 title:'베스트 추천상품',
                 description:'#제주여행 #완전면책 #슈퍼면책'
