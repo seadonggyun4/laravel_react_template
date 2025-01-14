@@ -5,6 +5,7 @@ import { ko } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
 import '../../../css/module/datePicker.css'
 import { MOBILE_WIDTH } from "@/constants";
+import { HiMiniMagnifyingGlassCircle } from "react-icons/hi2";
 
 
 const WebSearchSection = () => {
@@ -63,7 +64,10 @@ const WebSearchSection = () => {
                         ))}
                     </VehicleTypeSelecter>
                 </DataBox>
-                <SearchButton onClick={handleSearch}>차량 검색하기</SearchButton>
+                <SearchButton onClick={handleSearch}>
+                    차량 검색하기
+                    <HiMiniMagnifyingGlassCircle/>
+                </SearchButton>
             </SearchBox>
         </SearchSection>
     );
@@ -157,13 +161,21 @@ const VehicleTypeRadio = styled.input`
 
 // SearchButton
 const SearchButton = styled.button`
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
     padding: 1rem 2rem;
-    background-color: var(--primary-color);
+    background: var(--primary-color);
     height: 100%;
     color: white;
-    border-radius: 30px;
+    border-radius: 5px;
     transition: .3s ease-in-out;
     font-size: 0.9rem;
+    font-weight: bold;
+
+    & > svg{
+        font-size: 1.5rem;
+    }
 
     &:hover {
         background-color: var(--secondary-color);

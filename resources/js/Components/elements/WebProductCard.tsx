@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {setPrice} from "@/utils";
 import { MOBILE_WIDTH } from "@/constants";
-
-
+import { IoCall } from "react-icons/io5";
 
 interface Tag {
     class: string;
@@ -29,6 +28,11 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item }) => {
     return (
         <StyledWebProductCard>
             <div className="year">{item.year}</div>
+            <TagBox>
+                {item.tag.map((tag, tagIndex) => (
+                    <span key={tagIndex} className={tag.class}>{tag.text}</span>
+                ))}
+            </TagBox>
             <Content>
                 <ImageBox>
                     <img src={item.img} alt={item.title}/>
@@ -47,11 +51,10 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item }) => {
                     <p>{item.description}</p>
                 </TextBox>
             </Content>
-            <TagBox>
-                {item.tag.map((tag, tagIndex) => (
-                    <span key={tagIndex} className={tag.class}>{tag.text}</span>
-                ))}
-            </TagBox>
+            <ButtonWrap>
+                <button>예약 상담신청<IoCall /></button>
+                <button>실시간 예약신청<IoCall /></button>
+            </ButtonWrap>
         </StyledWebProductCard>
     );
 };
@@ -71,12 +74,11 @@ const ImageBox = styled.div`
         object-fit: cover;
     }
 
-
     @media (max-width: ${MOBILE_WIDTH}px) {
         margin-bottom: 0;
         width: 50%;
     }
-`
+`;
 
 const TextBox = styled.div`
     &  h4 {
@@ -106,12 +108,10 @@ const TextBox = styled.div`
         font-size: 0.9rem;
     }
 
-
     &  p > span {
         font-size: 1.1rem;
         color: var(--error-color);
     }
-
 
     @media (max-width: ${MOBILE_WIDTH}px) {
         width: 200px;
@@ -141,12 +141,13 @@ const TextBox = styled.div`
             color: var(--error-color);
         }
     }
-`
+`;
 
 const TagBox = styled.div`
+    margin-top: 25px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 
     & > span {
         padding: 3px;
@@ -189,7 +190,7 @@ const Content = styled.article`
         align-items: center;
         column-gap: 1rem;
     }
-`
+`;
 
 const StyledWebProductCard = styled.div`
     position: relative;
@@ -200,14 +201,13 @@ const StyledWebProductCard = styled.div`
     background-color: #ffffffff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-    perspective: 1000px;
-
+    overflow: hidden;
 
     & > .year {
         position: absolute;
         top: 0;
         left: 0;
-        padding: 15px;
+        padding: 15px 1rem;
         font-size: 1.2rem;
         font-weight: bold;
         background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
@@ -218,23 +218,48 @@ const StyledWebProductCard = styled.div`
     }
 
     &:hover {
-        cursor: pointer;
-        transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
-
-        & > ${ImageBox} {
-            transform: translateZ(50px) rotateX(-10deg);
-        }
-    }
-
-    @media (max-width: ${MOBILE_WIDTH}px) {
-        &:hover {
-            cursor: pointer;
-            transform: scale(1.03);
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
-        }
     }
 `;
 
 
+const ButtonWrap = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    button {
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+        padding: 15px;
+        border-radius: 20px;
+        font-size: 1rem;
+    }
+
+    button:first-child {
+        color: #ffffff;
+        background-color: var(--success-color);
+    }
+
+    button:nth-child(2) {
+        color: #ffffff;
+        background-color: var(--primary-color);
+    }
+
+    ${StyledWebProductCard}:hover & {
+        opacity: 1;
+    }
+`;
 
