@@ -4,6 +4,8 @@ import ReactDatePicker, { DatePickerProps } from "react-datepicker";
 import { ko } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
 import '../../../css/module/datePicker.css'
+import { MOBILE_WIDTH } from "@/constants";
+
 
 const WebSearchSection = () => {
     const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([new Date(), new Date()]);
@@ -82,12 +84,23 @@ const SearchBox = styled.div`
     display: flex;
     justify-content: space-between;
     width: var(--section-width);
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        flex-direction: column;
+        justify-content: flex-start;
+        row-gap: 20px;
+        width: 100%;
+    }
 `;
 
 const DataBox = styled.div`
     display: flex;
     flex-direction: column;
     width: 50rem;
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        width: 100%;
+    }
 `
 
 // StyledDatePicker

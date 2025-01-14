@@ -59,6 +59,7 @@ const StyledWrapper = styled.section`
     justify-content: center;
     padding: 3rem 0;
     width: 100%;
+    height: 100%;
     background-color: rgb(247, 247, 249);
 `;
 
@@ -117,8 +118,8 @@ const StyledCardContainer = styled.div<{ $active: boolean; $visible: boolean }>`
 `;
 
 const StyledNavButton = styled.button`
-    color: var(--primary-color);
-    font-size: 5rem;
+    color: #ffffff;
+    font-size: 2.5rem;
     position: absolute;
     display: flex;
     align-items: center;
@@ -126,10 +127,10 @@ const StyledNavButton = styled.button`
     top: 50%;
     z-index: 2;
     cursor: pointer;
-    user-select: none;
-    background: unset;
-    border: unset;
+    border-radius: 50%;
+    background-color: var(--primary-color);
     transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
 
     &.left {
         left: -2rem;
@@ -137,5 +138,14 @@ const StyledNavButton = styled.button`
 
     &.right {
         right: -2rem;
+    }
+
+    &:hover{
+        background-color: var(--secondary-color);
+    }
+
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        top: 20%;
     }
 `;
