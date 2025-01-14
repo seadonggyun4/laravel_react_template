@@ -242,20 +242,34 @@ const ButtonWrap = styled.div`
     button {
         display: flex;
         align-items: center;
-        column-gap: 5px;
+        justify-content: space-between;
         padding: 15px;
+        width: 70%;
         border-radius: 20px;
         font-size: 1rem;
+        transition: 0.3s ease-in-out;
+
+        & > svg {
+            font-size: 1.2rem;
+        }
     }
 
     button:first-child {
         color: #ffffff;
         background-color: var(--success-color);
+
+        &:hover {
+            background-color:#c1e277;
+        }
     }
 
     button:nth-child(2) {
         color: #ffffff;
         background-color: var(--primary-color);
+
+        &:hover {
+            background-color: var(--secondary-color);
+        }
     }
 
     ${StyledWebProductCard}:hover & {
