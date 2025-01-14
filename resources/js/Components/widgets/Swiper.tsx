@@ -5,6 +5,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styled from "styled-components";
+import { MODAL_WIDTH } from "@/constants"; // Import the constant
 
 const SwiperComponent: React.FC = () => {
     const [isPaused, setIsPaused] = useState(false); // Pause state
@@ -128,19 +129,27 @@ const Image = styled.img`
     width: 100%;
     height: auto;
     object-fit: cover;
+
+    @media (max-width: ${MODAL_WIDTH}px) {
+        height: 500px;
+    }
 `;
 
 const NavigationBar = styled.div`
     display: flex;
     justify-content: center;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border-secondary-color);
+    padding: 1.25rem 0;
+    border-bottom: 0.0625rem solid var(--border-secondary-color);
 
     & > div {
         display: flex;
         align-items: center;
-        gap: 30px;
+        gap: 1.875rem;
         width: var(--section-width);
+    }
+
+    @media (max-width: ${MODAL_WIDTH}px) {
+        display: none;
     }
 `;
 
@@ -148,14 +157,14 @@ const NavigationBtn = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 0.625rem;
+    border-radius: 0.9375rem;
     background-color: rgba(0, 0, 0, 0.5);
 
     & span {
-        margin-right: 15px;
-        font-size: 15px;
-        letter-spacing: 3px;
+        margin-right: 0.9375rem;
+        font-size: 0.9375rem;
+        letter-spacing: 0.1875rem;
         color: #ffffff;
     }
 
@@ -163,20 +172,20 @@ const NavigationBtn = styled.div`
         color: #ffffff;
         background: none;
         border: none;
-        font-size: 20px;
+        font-size: 1rem;
         cursor: pointer;
     }
 `;
 
 const NavigationTag = styled.ul`
     display: flex;
-    column-gap: 10px;
+    column-gap: 0.625rem;
 
     & li {
-        padding: 10px;
-        border: 1px solid var(--border-color);
-        border-radius: 15px;
-        font-size: 15px;
+        padding: 0.625rem;
+        border: 0.0625rem solid var(--border-color);
+        border-radius: 0.9375rem;
+        font-size: 0.8rem;
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -184,7 +193,7 @@ const NavigationTag = styled.ul`
         &.active {
             color: var(--primary-color);
             border-color: var(--primary-color);
-            box-shadow: var(--primary-color) 0px 2px 1px 0px;
+            box-shadow: var(--primary-color) 0rem 0.125rem 0.0625rem 0rem;
         }
     }
 `;

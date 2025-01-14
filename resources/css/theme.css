@@ -21,7 +21,4 @@
 
     /* zindex */
     --header-zindex: 100;
-
-    /* device */
-    --mobile-width: 768px;
 }

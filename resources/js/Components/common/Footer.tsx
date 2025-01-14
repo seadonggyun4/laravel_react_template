@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { MODAL_WIDTH } from "@/constants"; // Import the constant
 
 const Footer: React.FC = () => {
     return (
@@ -61,7 +62,7 @@ const ContentWrapper = styled.div`
     max-width: var(--section-width);
     margin-bottom: 1.25rem;
 
-    @media (max-width: var(--mobile-width)) {
+    @media (max-width: ${MODAL_WIDTH}px) {
         flex-direction: column;
         align-items: center;
     }
@@ -90,7 +91,7 @@ const Section = styled.div`
         }
     }
 
-    @media (max-width: var(--mobile-width)) {
+    @media (max-width: ${MODAL_WIDTH}px) {
         margin: 1.25rem 0;
         text-align: center;
     }

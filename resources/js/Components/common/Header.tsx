@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
-import { NavMenu, NaveContentMenu } from "@/routes";
+import { NavMenu, NaveContentMenu } from "@/constants/routes";
 
 const Header: React.FC = () => {
     const [hoversed, setHoversed] = useState<string | null>(null);
@@ -79,12 +79,12 @@ const HeaderBox = styled.header`
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-bottom: 1px solid var(--border-secondary-color);
+    border-bottom: 0.0625rem solid var(--border-secondary-color);
 
     & > div {
         display: flex;
         justify-content: space-between;
-        padding: 10px 0;
+        padding: 0.625rem 0;
         width: var(--section-width);
     }
 `;
@@ -93,7 +93,7 @@ const Logo = styled.h1`
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 1.875rem;
     & > a{
         color: var(--primary-color);
     }
@@ -102,17 +102,17 @@ const Logo = styled.h1`
 const RightSection = styled.div`
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 0.9375rem;
 `;
 
 const LoginButton = styled.button`
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid var(--border-color);
     transition: 0.3s ease-in-out;
 
     &:hover {
-        border: 1px solid var(--font-secondary-color);
+        border: 0.0625rem solid var(--font-secondary-color);
     }
 `;
 
@@ -121,12 +121,12 @@ const Nav = styled.nav`
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 0.0625rem solid #e0e0e0;
 
     & > div {
         display: flex;
-        column-gap: 10px;
-        padding: 20px 0;
+        column-gap: 0.625rem;
+        padding: 1.25rem 0;
         width: var(--section-width);
     }
 `;
@@ -134,9 +134,9 @@ const Nav = styled.nav`
 const StyledLink = styled(Link)`
     font-size: 1rem;
     text-decoration: none;
-    padding: 5px;
-    border-radius: 5px;
-    width: 80px;
+    padding: 0.3125rem;
+    border-radius: 0.3125rem;
+    width: 5rem;
     text-align: center;
     transition: all 0.3s ease-in-out;
 
@@ -159,15 +159,15 @@ const NavContent = styled.div`
     width: 100%;
     height: auto;
     background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    backdrop-filter: blur(0.3125rem);
+    box-shadow: rgba(99, 99, 99, 0.2) 0rem 0.125rem 0.5rem 0rem;
     animation: showMenuContent 0.3s ease-out forwards;
 
     & > ul {
         display: flex;
         align-items: start;
-        column-gap: 20px;
-        padding: 20px 0;
+        column-gap: 1.25rem;
+        padding: 1.25rem 0;
         width: var(--section-width);
     }
 

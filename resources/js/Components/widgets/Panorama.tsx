@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { MODAL_WIDTH } from "@/constants"; // Import the constant
 
 const Panorama: React.FC = () => {
     const bgVideo = "assets/video/bgVideo.mp4";
@@ -76,7 +77,7 @@ const TextContent = styled.div`
 
     h2 {
         margin-bottom: 10px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: bold;
 
         & > span {
@@ -85,8 +86,18 @@ const TextContent = styled.div`
     }
 
     p {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: var(--border-color);
+    }
+
+    @media (max-width: ${MODAL_WIDTH}px) {
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
     }
 `;
 
