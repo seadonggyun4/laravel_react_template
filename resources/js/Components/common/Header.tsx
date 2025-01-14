@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
 import { NavMenu, NaveContentMenu } from "@/constants/routes";
 
 const Header: React.FC = () => {
     const [hoversed, setHoversed] = useState<string | null>(null);
-
     const { url } = usePage();
+    const firstPath =  `/${url.split("/")[1]}`;
+
 
     const activeMenu: string | undefined = Object.keys(NaveContentMenu).find((parentKey) =>
         NaveContentMenu[parentKey]?.some((subItem) => subItem.link === url)
     );
+
+    useEffect(() => {
+        setHoversed(firstPath)
+    },[])
 
     return (
         <HeaderContainer>
@@ -35,7 +40,7 @@ const Header: React.FC = () => {
                                 key={item.link}
                                 href={item.link}
                                 onMouseOver={() => setHoversed(item.link)}
-                                className={url === item.link ? "active" : ""}
+                                className={firstPath === item.link ? "active" : ""}
                             >
                                 {item.title}
                             </StyledLink>
