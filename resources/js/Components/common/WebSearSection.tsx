@@ -60,7 +60,7 @@ const WebSearchSection = () => {
                         ))}
                     </VehicleTypeSelecter>
                 </DataBox>
-                <SearchButton onClick={handleSearch}>검색하기</SearchButton>
+                <SearchButton onClick={handleSearch}>차량 검색하기</SearchButton>
             </SearchBox>
         </SearchSection>
     );
@@ -68,7 +68,6 @@ const WebSearchSection = () => {
 
 export default WebSearchSection;
 
-// Styled Components
 const SearchSection = styled.section`
     display: flex;
     align-items: center;
@@ -139,16 +138,16 @@ const VehicleTypeRadio = styled.input`
     display: none;
 `;
 
+// SearchButton
 const SearchButton = styled.button`
-    padding: 10px 20px;
-    background-color: #0048ba;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    height: 100%;
     color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
+    border-radius: 30px;
+    transition: .3s ease-in-out;
 
     &:hover {
-        background-color: #003a94;
+        background-color: var(--secondary-color);
     }
 `;
