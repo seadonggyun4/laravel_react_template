@@ -5,7 +5,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styled from "styled-components";
-import { MODAL_WIDTH } from "@/constants"; // Import the constant
+import { MOBILE_WIDTH } from "@/constants"; // Import the constant
 
 const SwiperComponent: React.FC = () => {
     const [isPaused, setIsPaused] = useState(false); // Pause state
@@ -130,7 +130,7 @@ const Image = styled.img`
     height: auto;
     object-fit: cover;
 
-    @media (max-width: ${MODAL_WIDTH}px) {
+    @media (max-width: ${MOBILE_WIDTH}px) {
         height: 500px;
     }
 `;
@@ -148,7 +148,7 @@ const NavigationBar = styled.div`
         width: var(--section-width);
     }
 
-    @media (max-width: ${MODAL_WIDTH}px) {
+    @media (max-width: ${MOBILE_WIDTH}px) {
         display: none;
     }
 `;

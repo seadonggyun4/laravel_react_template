@@ -5,6 +5,7 @@ import PageLayout from "@/Layouts/PageLayout";
 import WebProductCard from "@/Components/elements/WebProductCard";
 import {bestPromotions, premiumPromotions, salesPromotions} from "@/data";
 import WebProductsSection from "@/Components/common/WebProductsSection";
+import { MOBILE_WIDTH } from "@/constants";
 
 export default function HomePage() {
     const Banner = '/assets/img/banner.jpeg';
@@ -51,6 +52,10 @@ const BannerBox = styled.div`
         width: 100%;
         height: auto;
         object-fit: contain;
+    }
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        display: none;
     }
 `
 

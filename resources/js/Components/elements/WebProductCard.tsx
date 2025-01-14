@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {setPrice} from "@/utils";
+import { MOBILE_WIDTH } from "@/constants";
+
 
 
 interface Tag {
@@ -27,18 +29,24 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item }) => {
     return (
         <StyledWebProductCard>
             <div className="year">{item.year}</div>
-            <img src={item.img} alt={item.title} />
-            <h4>{item.title}</h4>
-            {item?.reservation && (
-                <p>
-                    실시간 예약 <span>{setPrice(item.reservation)}원 할인</span>
-                </p>
-            )}
-            <strong className={item.sale ? 'sale' : ''}>
-                {setPrice(item.price)}원
-                {item.sale && (<span>[{item.sale}% 할인]</span>)}
-            </strong>
-            <p>{item.description}</p>
+            <Content>
+                <ImageBox>
+                    <img src={item.img} alt={item.title}/>
+                </ImageBox>
+                <TextBox>
+                    <h4>{item.title}</h4>
+                    {item?.reservation && (
+                        <p>
+                            실시간 예약 <span>{setPrice(item.reservation)}원 할인</span>
+                        </p>
+                    )}
+                    <strong className={item.sale ? 'sale' : ''}>
+                        {setPrice(item.price)}원
+                        {item.sale && (<span>[{item.sale}% 할인]</span>)}
+                    </strong>
+                    <p>{item.description}</p>
+                </TextBox>
+            </Content>
             <TagBox>
                 {item.tag.map((tag, tagIndex) => (
                     <span key={tagIndex} className={tag.class}>{tag.text}</span>
@@ -50,82 +58,90 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item }) => {
 
 export default WebProductCard;
 
-// Styled components
-const StyledWebProductCard = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 15px;
-    background-color: #ffffffff;
+const ImageBox = styled.div`
+    margin-bottom: 15px;
+    width: 100%;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
-    perspective: 1000px;
+    will-change: transform, box-shadow;
+    transform-origin: center center;
 
     & > img {
-        margin-bottom: 15px;
         width: 100%;
-        object-fit: contain;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        will-change: transform, box-shadow;
-        transform-origin: center center;
+        height: auto;
+        object-fit: cover;
     }
 
-    & > h4 {
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        margin-bottom: 0;
+        width: 50%;
+    }
+`
+
+const TextBox = styled.div`
+    &  h4 {
         margin-bottom: 1rem;
         font-size: 1.15rem;
         font-weight: bold;
     }
 
-    & > strong {
+    &  strong {
+        display: block;
         font-size: 1.1rem;
         font-weight: 600;
-        margin-bottom: 15px;
+        margin-bottom: 5px;
     }
 
-    & > strong.sale {
+    &  strong.sale {
         color: var(--error-color);
     }
 
-    & > strong > span {
+    &  strong > span {
         margin-left: 0.3rem;
         font-size: 0.9rem;
     }
 
-    & > p {
+    &  p {
         margin-bottom: 5px;
         font-size: 0.9rem;
     }
 
-    & > p > span {
+
+    &  p > span {
         font-size: 1.1rem;
         color: var(--error-color);
     }
 
-    & > .year {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 15px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-    }
 
-    &:hover {
-        cursor: pointer;
-        transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        width: 200px;
 
-        & > img {
-            transform: translateZ(50px) rotateX(-10deg);
+        &  h4 {
+            font-size: 1rem;
+        }
+
+        &  strong {
+            font-size: 1rem;
+        }
+
+        &  strong > span {
+            font-size: 0.8rem;
+        }
+
+        &  p {
+            font-size: 0.8rem;
+        }
+
+        &  p:last-child {
+            margin-bottom: 0;
+        }
+
+        &  p > span {
+            font-size: 0.95rem;
+            color: var(--error-color);
         }
     }
-`;
+`
 
 const TagBox = styled.div`
     display: flex;
@@ -136,7 +152,7 @@ const TagBox = styled.div`
         padding: 3px;
         border-radius: 5px;
         border: 1px solid var(--border-color);
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 600;
     }
 
@@ -158,4 +174,67 @@ const TagBox = styled.div`
         border: 1px solid var(--error-color);
         background-color: var(--error-bg-color);
     }
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        & > span{
+            font-size: 0.7rem;
+        }
+    }
 `;
+
+const Content = styled.article`
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 1rem;
+    }
+`
+
+const StyledWebProductCard = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: #ffffffff;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    perspective: 1000px;
+
+
+    & > .year {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 15px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
+
+        & > ${ImageBox} {
+            transform: translateZ(50px) rotateX(-10deg);
+        }
+    }
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.03);
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
+        }
+    }
+`;
+
+
+

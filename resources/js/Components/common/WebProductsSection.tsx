@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { MOBILE_WIDTH } from "@/constants";
 
 interface WebProductsSectionProps {
     text?: {
@@ -50,11 +51,28 @@ const ProductWrapper = styled.article`
     & > P {
         margin-bottom: 3rem;
     }
+
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        padding: 1rem;
+
+        & > h3{
+            font-size: 1.5rem;
+        }
+
+        & > P {
+            font-size: 1rem;
+        }
+    }
 `
 
 const GridContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px; /* Space between items */
     width: 100%;
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;

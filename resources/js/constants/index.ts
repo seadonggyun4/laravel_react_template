@@ -1,2 +1,2 @@
 // UI
-export const MODAL_WIDTH = 768;
+export const MOBILE_WIDTH = 768;
