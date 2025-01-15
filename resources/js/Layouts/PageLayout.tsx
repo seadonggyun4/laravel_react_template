@@ -2,9 +2,15 @@ import React from 'react';
 import { Head } from '@inertiajs/react';
 import Header from '@/Components/common/Header';
 import Footer from '@/Components/common/Footer';
+import PopUpBg from "@/Components/common/PopUpBg";
 import styled from 'styled-components';
+import { useShowPopUp } from "@/ux/provider/ShowPopUp";
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
+    const { showCardDetail } = useShowPopUp();
+
+    const showPopUp = showCardDetail !== null;
+
     return (
         <PageWrapper>
             <Head title={title} />
@@ -13,6 +19,7 @@ const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ ti
                 {children}
             </Main>
             <Footer/>
+            <PopUpBg show={showPopUp}/>
         </PageWrapper>
     );
 };

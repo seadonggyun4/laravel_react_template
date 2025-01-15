@@ -10,6 +10,7 @@ import { createRoot } from 'react-dom/client';
 
 // provider
 import { DeviceSizeProvider } from '@/ux/provider/DeviceSize';
+import { ShowPopUpProvider } from "@/ux/provider/ShowPopUp";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -23,7 +24,9 @@ const App = createInertiaApp({
     setup({ el, App, props }) {
         createRoot(el).render(
             <DeviceSizeProvider>
-                <App {...props} />
+                <ShowPopUpProvider>
+                    <App {...props} />
+                </ShowPopUpProvider>
             </DeviceSizeProvider>
         );
     },

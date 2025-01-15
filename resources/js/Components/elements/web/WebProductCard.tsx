@@ -4,6 +4,7 @@ import { setPrice } from "@/utils";
 import { IoCall } from "react-icons/io5";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { Link } from "@inertiajs/react";
+import { useShowPopUp } from "@/ux/provider/ShowPopUp";
 
 interface Tag {
     class: string;
@@ -28,32 +29,42 @@ interface WebProductCardProps {
 }
 
 const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) => {
-    const [showDetail, setShowDetail] = useState(false);
+    const [leftCard, setLeftCard] = useState(false);
+    const { showCardDetail, toggleShowCardDetail } = useShowPopUp();
 
     const toggleDetail = (e: React.MouseEvent) => {
         e.stopPropagation();
-        setShowDetail((prev) => !prev);
+        const cardRect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+        setLeftCard(cardRect.left < window.innerWidth / 2);
+        toggleShowCardDetail(showCardDetail === item.title ? null : item.title);
     };
 
     const handleOutsideClick = (e: MouseEvent) => {
         if (!(e.target as HTMLElement).closest('.card-container')) {
-            setShowDetail(false);
+            toggleShowCardDetail(null);
         }
     };
 
     useEffect(() => {
-        if (showDetail) {
+        if (showCardDetail) {
             document.addEventListener('click', handleOutsideClick);
         } else {
             document.removeEventListener('click', handleOutsideClick);
         }
         return () => document.removeEventListener('click', handleOutsideClick);
-    }, [showDetail]);
+    }, [showCardDetail]);
+
+    const isActive = showCardDetail === item.title;
 
     const showLinkWrap = reserve || pay;
 
     return (
-        <StyledWebProductCard $showLinkWrap={showLinkWrap} $showDetail={showDetail} className="card-container" onClick={toggleDetail}>
+        <StyledWebProductCard
+            $showLinkWrap={showLinkWrap}
+            $isActive={isActive}
+            className="card-container"
+            onClick={showLinkWrap ? toggleDetail : ()=>{}}
+        >
             <div className="year">{item.year}</div>
             <TagBox>
                 {item.tag.map((tag, tagIndex) => (
@@ -78,9 +89,9 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
                     <p>{item.description}</p>
                 </TextBox>
             </Content>
-            {showLinkWrap && showDetail && (
-                <DetailBox>
-                    <Triangle />
+            {showLinkWrap && isActive && (
+                <DetailBox $leftCard={leftCard}>
+                    <Triangle $leftCard={leftCard} />
                     <DetailWrap>
                         <strong>합리적 가격</strong>
                         <span>
@@ -197,7 +208,7 @@ const Content = styled.article`
     margin-bottom: 20px;
 `;
 
-const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $showDetail: boolean }>`
+const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $isActive: boolean }>`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -208,7 +219,7 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $sh
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
     perspective: 1000px;
     cursor: pointer;
-    z-index: ${({ $showDetail }) => ($showDetail ? 1 : 0)};
+    z-index: ${({ $isActive }) => ($isActive ? 1000 : 0)};
 
     & > .year {
         position: absolute;
@@ -224,23 +235,21 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $sh
         color: transparent;
     }
 
-
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
         ${({ $showLinkWrap }) =>
             !$showLinkWrap &&
             css`
-                    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
-                    cursor: pointer;
-                `}
+                transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+                cursor: pointer;
+            `}
     }
 `;
 
-
-const DetailBox = styled.div`
+const DetailBox = styled.div<{ $leftCard: boolean }>`
     position: absolute;
     top: 0;
-    right: -90%;
+    right: ${({ $leftCard }) => ($leftCard ? "-90%" : "105%")};
     display: flex;
     flex-direction: column;
     row-gap: 15px;
@@ -249,9 +258,9 @@ const DetailBox = styled.div`
     border-radius: 15px;
     background-color: var(--disabled-color);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
-    opacity: 0;
-    transform: translateX(-30%);
-    animation: ShowDetailBox 0.2s ease-in-out forwards;
+    opacity: 1;
+    transform: translateX(0);
+    animation: ShowDetailBox 0.3s ease-in-out forwards;
 
 
     @keyframes ShowDetailBox {
@@ -309,15 +318,22 @@ const DetailWrap = styled.div`
     }
 `;
 
-const Triangle = styled.div`
+const Triangle = styled.div<{ $leftCard: boolean }>`
     position: absolute;
     top: 10%;
-    left: -10px;
+    left: ${({ $leftCard }) => ($leftCard ? "-10px" : "auto")};
+    right: ${({ $leftCard }) => ($leftCard ? "auto" : "-10px")};
     width: 0;
     height: 0;
     border-style: solid;
     border-width: 10px 10px 10px 0;
     border-color: transparent var(--disabled-color) transparent transparent;
+    ${({ $leftCard }) =>
+        !$leftCard &&
+        css`
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--disabled-color);
+        `}
 `;
 
 const LinkWrap = styled.div`
