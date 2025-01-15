@@ -3,15 +3,23 @@ import styled from "styled-components";
 
 const PopUpBg = ({ show }: { show: boolean }) => {
     useEffect(() => {
+        const preventScroll = (e: Event) => {
+            e.preventDefault();
+            e.stopPropagation();
+        };
+
         if (show) {
-            document.body.style.overflow = "hidden"; // Disable scrolling
+            window.addEventListener("wheel", preventScroll, { passive: false });
+            window.addEventListener("touchmove", preventScroll, { passive: false });
         } else {
-            document.body.style.overflow = ""; // Re-enable scrolling
+            window.removeEventListener("wheel", preventScroll);
+            window.removeEventListener("touchmove", preventScroll);
         }
 
         // Cleanup on unmount
         return () => {
-            document.body.style.overflow = "";
+            window.removeEventListener("wheel", preventScroll);
+            window.removeEventListener("touchmove", preventScroll);
         };
     }, [show]);
 
