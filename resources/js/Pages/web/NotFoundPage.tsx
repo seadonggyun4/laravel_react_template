@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import React from "react";
 import PageLayout from "@/Layouts/PageLayout";
+import { Link } from "@inertiajs/react";
 
 const NotFoundPage = () => {
     const NotFoundImg = '/assets/img/notFoundImg.png';
 
-    const moveToHome = () => {
-    };
 
     return (
         <PageLayout title="제주도렌트카 | 제주엔젤카">
@@ -21,9 +20,9 @@ const NotFoundPage = () => {
                         죄송합니다, 요청하신 페이지를 찾을 수 없습니다. <br />
                         입력하신 주소가 정확한지 확인하시거나, 홈페이지로 돌아가 다시 시도해주세요.
                     </TextBox>
-                    <ButtonBox>
-                        <HomeButton onClick={moveToHome}>홈으로 이동</HomeButton>
-                    </ButtonBox>
+                    <LinkBox>
+                        <Link href={"/"}>홈으로 이동</Link>
+                    </LinkBox>
                 </Wrapper>
             </Box>
         </PageLayout>
@@ -72,25 +71,28 @@ const TextBox = styled.div`
     padding: 24px;
     border-radius: 8px;
     text-align: center;
-    background-color: #f7f8fa;
+    background-color: var(--bg-secondary-color);
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
     letter-spacing: -0.128px;
 `;
 
-const ButtonBox = styled.div`
+const LinkBox = styled.div`
     margin-top: 15px;
-`;
 
-const HomeButton = styled.button`
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: var(--primary-color);
-    color: white;
-    transition: 0.3s ease-in-out;
+    & > a {
+        display: block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: var(--primary-color);
+        color: white;
+        transition: 0.3s ease-in-out;
 
-    &:hover {
-        background-color: var(--secondary-color);
+        &:hover {
+            background-color: var(--secondary-color);
+        }
     }
 `;
+
+

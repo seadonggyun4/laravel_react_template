@@ -152,7 +152,7 @@ const VehicleTypeLabel = styled.label<{ $isChecked: boolean }>`
     transition: background-color 0.3s ease;
 
     &:hover {
-        background-color: var(--border-secondary-color);
+        background-color: ${(props) => (props.$isChecked ? "var(--secondary-color)" : "var(--border-secondary-color)")};
     }
 `;
 
