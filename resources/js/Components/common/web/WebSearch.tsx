@@ -3,7 +3,7 @@ import React, { useState, forwardRef } from "react";
 import ReactDatePicker, { DatePickerProps } from "react-datepicker";
 import { ko } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
-import '../../../css/module/datePicker.css'
+import '../../../../css/module/datePicker.css'
 import { MOBILE_WIDTH } from "@/constants";
 import { HiMiniMagnifyingGlassCircle } from "react-icons/hi2";
 
@@ -116,7 +116,8 @@ const StyledDatePicker = styled(
     padding: 1rem;
     width: 100%;
     border: 2px solid var(--primary-color);
-    border-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     font-size: 0.9rem;
     background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

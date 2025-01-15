@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {setPrice} from "@/utils";
-import { MOBILE_WIDTH } from "@/constants";
 import { IoCall } from "react-icons/io5";
+import { FcMoneyTransfer } from "react-icons/fc";
+import { Link } from "@inertiajs/react";
 
 interface Tag {
     class: string;
@@ -22,11 +23,15 @@ interface ProductItem {
 
 interface WebProductCardProps {
     item: ProductItem;
+    reserve?: string;
+    pay?: string;
 }
 
-const WebProductCard: React.FC<WebProductCardProps> = ({ item }) => {
+const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) => {
+    const showLinkWrap = reserve || pay;
+
     return (
-        <StyledWebProductCard>
+        <StyledWebProductCard $showLinkWrap={showLinkWrap}>
             <div className="year">{item.year}</div>
             <TagBox>
                 {item.tag.map((tag, tagIndex) => (
@@ -51,10 +56,12 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item }) => {
                     <p>{item.description}</p>
                 </TextBox>
             </Content>
-            <ButtonWrap>
-                <button>예약 상담신청<IoCall /></button>
-                <button>실시간 예약신청<IoCall /></button>
-            </ButtonWrap>
+            {showLinkWrap && (
+                <LinkWrap>
+                    {reserve && <Link className="reserve" href={'#'}>예약 상담신청<IoCall /></Link>}
+                    {pay && <Link className="pay" href={'#'}>실시간 예약신청<FcMoneyTransfer /></Link>}
+                </LinkWrap>
+            )}
         </StyledWebProductCard>
     );
 };
@@ -72,11 +79,6 @@ const ImageBox = styled.div`
         width: 100%;
         height: auto;
         object-fit: cover;
-    }
-
-    @media (max-width: ${MOBILE_WIDTH}px) {
-        margin-bottom: 0;
-        width: 50%;
     }
 `;
 
@@ -112,35 +114,6 @@ const TextBox = styled.div`
         font-size: 1.1rem;
         color: var(--error-color);
     }
-
-    @media (max-width: ${MOBILE_WIDTH}px) {
-        width: 200px;
-
-        &  h4 {
-            font-size: 1rem;
-        }
-
-        &  strong {
-            font-size: 1rem;
-        }
-
-        &  strong > span {
-            font-size: 0.8rem;
-        }
-
-        &  p {
-            font-size: 0.8rem;
-        }
-
-        &  p:last-child {
-            margin-bottom: 0;
-        }
-
-        &  p > span {
-            font-size: 0.95rem;
-            color: var(--error-color);
-        }
-    }
 `;
 
 const TagBox = styled.div`
@@ -175,24 +148,11 @@ const TagBox = styled.div`
         border: 1px solid var(--error-color);
         background-color: var(--error-bg-color);
     }
-
-    @media (max-width: ${MOBILE_WIDTH}px) {
-        & > span{
-            font-size: 0.8rem;
-        }
-    }
 `;
 
-const Content = styled.article`
-    @media (max-width: ${MOBILE_WIDTH}px) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        column-gap: 1rem;
-    }
-`;
+const Content = styled.article``;
 
-const StyledWebProductCard = styled.div`
+const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined }>`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -201,6 +161,7 @@ const StyledWebProductCard = styled.div`
     background-color: #ffffffff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
+    perspective: 1000px;
     overflow: hidden;
 
     & > .year {
@@ -219,11 +180,16 @@ const StyledWebProductCard = styled.div`
 
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
+        ${({ $showLinkWrap }) =>
+            !$showLinkWrap &&
+            css`
+                transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+                cursor: pointer;
+            `}
     }
 `;
 
-
-const ButtonWrap = styled.div`
+const LinkWrap = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -239,7 +205,7 @@ const ButtonWrap = styled.div`
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 
-    button {
+    a {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -254,7 +220,7 @@ const ButtonWrap = styled.div`
         }
     }
 
-    button:first-child {
+    a.reserve {
         color: #ffffff;
         background-color: var(--success-color);
 
@@ -263,7 +229,7 @@ const ButtonWrap = styled.div`
         }
     }
 
-    button:nth-child(2) {
+    a.pay {
         color: #ffffff;
         background-color: var(--primary-color);
 
@@ -276,4 +242,3 @@ const ButtonWrap = styled.div`
         opacity: 1;
     }
 `;
-

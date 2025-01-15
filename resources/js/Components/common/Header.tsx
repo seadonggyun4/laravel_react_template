@@ -69,7 +69,7 @@ const Header: React.FC = () => {
 };
 
 // HeaderContainer
-const HeaderContainer = styled.article`
+const HeaderContainer = styled.header`
     position: fixed;
     top: 0;
     left: 0;
@@ -79,7 +79,7 @@ const HeaderContainer = styled.article`
 `;
 
 // HeaderBox
-const HeaderBox = styled.header`
+const HeaderBox = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;

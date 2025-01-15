@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
-import WebProductCard from "@/Components/elements/WebProductCard";
+import WebProductCard from "@/Components/elements/web/WebProductCard";
 import { bestPromotions } from "@/data";
 import { MOBILE_WIDTH } from "@/constants";
 

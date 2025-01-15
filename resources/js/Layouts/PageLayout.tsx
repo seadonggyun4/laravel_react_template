@@ -6,18 +6,24 @@ import styled from 'styled-components';
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
     return (
-        <>
+        <PageWrapper>
             <Head title={title} />
             <Header />
             <Main>
                 {children}
             </Main>
             <Footer/>
-        </>
+        </PageWrapper>
     );
 };
 
 export default PageLayout;
+
+const PageWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    min-width: 768;
+`;
 
 const Main = styled.main`
     padding-top: var(--header-height);
