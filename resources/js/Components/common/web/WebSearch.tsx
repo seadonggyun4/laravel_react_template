@@ -166,7 +166,7 @@ const SearchButton = styled.button`
     align-items: center;
     column-gap: 10px;
     padding: 1rem 2rem;
-    background: var(--primary-color);
+    background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
     height: 100%;
     color: white;
     border-radius: 5px;
@@ -179,6 +179,6 @@ const SearchButton = styled.button`
     }
 
     &:hover {
-        background-color: var(--secondary-color);
+        box-shadow: rgba(00, 161, 229, 0.85) 0px 5px 15px;
     }
 `;

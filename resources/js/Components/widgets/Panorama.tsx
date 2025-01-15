@@ -21,7 +21,7 @@ const Panorama: React.FC = () => {
             <Video src={bgVideo} loop autoPlay muted></Video>
             <TextContent>
                 <h2>놓치지 마세요! <span>한정 프로모션!</span></h2>
-                <p>지금 바로 참여하고 특별한 혜택을 누리세요.</p>
+                <p>지금 호로록 들어오멍 특별한 혜택 챙겨갑써예! 😃</p>
             </TextContent>
             <Circle>
                 {images.map((image, index) => (
@@ -79,6 +79,7 @@ const TextContent = styled.div`
         margin-bottom: 10px;
         font-size: 1.8rem;
         font-weight: bold;
+        font-family: 'Jua', sans-serif;
 
         & > span {
             color: var(--primary-color);

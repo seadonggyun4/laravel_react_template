@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import {setPrice} from "@/utils";
+import { setPrice } from "@/utils";
 import { IoCall } from "react-icons/io5";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { Link } from "@inertiajs/react";
@@ -28,10 +28,32 @@ interface WebProductCardProps {
 }
 
 const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) => {
+    const [showDetail, setShowDetail] = useState(false);
+
+    const toggleDetail = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setShowDetail((prev) => !prev);
+    };
+
+    const handleOutsideClick = (e: MouseEvent) => {
+        if (!(e.target as HTMLElement).closest('.card-container')) {
+            setShowDetail(false);
+        }
+    };
+
+    useEffect(() => {
+        if (showDetail) {
+            document.addEventListener('click', handleOutsideClick);
+        } else {
+            document.removeEventListener('click', handleOutsideClick);
+        }
+        return () => document.removeEventListener('click', handleOutsideClick);
+    }, [showDetail]);
+
     const showLinkWrap = reserve || pay;
 
     return (
-        <StyledWebProductCard $showLinkWrap={showLinkWrap}>
+        <StyledWebProductCard $showLinkWrap={showLinkWrap} $showDetail={showDetail} className="card-container" onClick={toggleDetail}>
             <div className="year">{item.year}</div>
             <TagBox>
                 {item.tag.map((tag, tagIndex) => (
@@ -40,7 +62,7 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
             </TagBox>
             <Content>
                 <ImageBox>
-                    <img src={item.img} alt={item.title}/>
+                    <img src={item.img} alt={item.title} />
                 </ImageBox>
                 <TextBox>
                     <h4>{item.title}</h4>
@@ -50,17 +72,32 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
                         </p>
                     )}
                     <strong className={item.sale ? 'sale' : ''}>
-                        {setPrice(item.price)}원
+                        {setPrice(item.price)} ₩
                         {item.sale && (<span>[{item.sale}% 할인]</span>)}
                     </strong>
                     <p>{item.description}</p>
                 </TextBox>
             </Content>
-            {showLinkWrap && (
-                <LinkWrap>
-                    {reserve && <Link className="reserve" href={'#'}>예약 상담신청<IoCall /></Link>}
-                    {pay && <Link className="pay" href={'#'}>실시간 예약신청<FcMoneyTransfer /></Link>}
-                </LinkWrap>
+            {showLinkWrap && showDetail && (
+                <DetailBox>
+                    <Triangle />
+                    <DetailWrap>
+                        <strong>합리적 가격</strong>
+                        <span>
+                            안심하세요.엔젤렌터카는 차량을<br />
+                            합리적인 금액에 제공해드립니다. 😘
+                        </span>
+                        <div className="detail-btns">
+                            <button>사진 보기</button>
+                            <button>차량 상세</button>
+                            <button>영상 보기</button>
+                        </div>
+                    </DetailWrap>
+                    <LinkWrap>
+                        {reserve && <Link className="reserve" href={'#'}>상담 예약<IoCall /></Link>}
+                        {pay && <Link className="pay" href={'#'}>실시간 예약<FcMoneyTransfer /></Link>}
+                    </LinkWrap>
+                </DetailBox>
             )}
         </StyledWebProductCard>
     );
@@ -69,7 +106,6 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
 export default WebProductCard;
 
 const ImageBox = styled.div`
-    margin-bottom: 15px;
     width: 100%;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     will-change: transform, box-shadow;
@@ -110,6 +146,10 @@ const TextBox = styled.div`
         font-size: 0.9rem;
     }
 
+    & p:last-child {
+        margin-bottom: 0;
+    }
+
     &  p > span {
         font-size: 1.1rem;
         color: var(--error-color);
@@ -130,7 +170,7 @@ const TagBox = styled.div`
         font-weight: 600;
     }
 
-    & > span.normal{
+    & > span.normal {
         color: var(--primary-color);
         border: 1px solid var(--primary-color);
         background-color: var(--primary-bg-color);
@@ -143,26 +183,32 @@ const TagBox = styled.div`
         background-color: var(--secondary-bg-color);
     }
 
-    & > span.super{
+    & > span.super {
         color: var(--error-color);
         border: 1px solid var(--error-color);
         background-color: var(--error-bg-color);
     }
 `;
 
-const Content = styled.article``;
+const Content = styled.article`
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+    margin-bottom: 20px;
+`;
 
-const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined }>`
+const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $showDetail: boolean }>`
     position: relative;
     display: flex;
     flex-direction: column;
     padding: 1rem;
     border-radius: 15px;
-    background-color: #ffffffff;
+    background-color: #ffffff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
     perspective: 1000px;
-    overflow: hidden;
+    cursor: pointer;
+    z-index: ${({ $showDetail }) => ($showDetail ? 1 : 0)};
 
     & > .year {
         position: absolute;
@@ -171,39 +217,120 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined }>`
         padding: 15px 1rem;
         font-size: 1.2rem;
         font-weight: bold;
-        background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
+        background: linear-gradient(90deg, rgba(0, 161, 229, 1) 50%, rgba(3, 217, 243, 1) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         color: transparent;
     }
 
+
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
         ${({ $showLinkWrap }) =>
             !$showLinkWrap &&
             css`
-                transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
-                cursor: pointer;
-            `}
+                    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+                    cursor: pointer;
+                `}
     }
 `;
 
-const LinkWrap = styled.div`
+
+const DetailBox = styled.div`
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: -90%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 250px;
     height: 100%;
+    border-radius: 15px;
+    background-color: var(--disabled-color);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
+    opacity: 0;
+    transform: translateX(-30%);
+    animation: ShowDetailBox 0.2s ease-in-out forwards;
+
+
+    @keyframes ShowDetailBox {
+        0%{
+            opacity: 0;
+            transform: translateX(-30%);
+        }
+        100%{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+`;
+
+const DetailWrap = styled.div`
+    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 15px;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+
+    & > strong {
+        font-family: 'Jua', sans-serif;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    & > span {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: var(--border-color);
+    }
+
+    & > .detail-btns {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+
+        button {
+            padding: 3px;
+            border-radius: 5px;
+            background-color: var(--border-secondary-color);
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                color: #fff;
+                background-color: var(--secondary-color);
+            }
+        }
+    }
+`;
+
+const Triangle = styled.div`
+    position: absolute;
+    top: 10%;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--disabled-color) transparent transparent;
+`;
+
+const LinkWrap = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+    width: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: var(--primary-color);
 
     a {
         display: flex;
@@ -211,7 +338,7 @@ const LinkWrap = styled.div`
         justify-content: space-between;
         padding: 15px;
         width: 70%;
-        border-radius: 20px;
+        border-radius: 15px;
         font-size: 1rem;
         transition: 0.3s ease-in-out;
 
@@ -225,20 +352,15 @@ const LinkWrap = styled.div`
         background-color: var(--success-color);
 
         &:hover {
-            background-color:#c1e277;
+            background-color: #c1e277;
         }
     }
 
     a.pay {
-        color: #ffffff;
-        background-color: var(--primary-color);
+        background-color: #ffe699;
 
         &:hover {
-            background-color: var(--secondary-color);
+            background-color: #fcbd65;
         }
-    }
-
-    ${StyledWebProductCard}:hover & {
-        opacity: 1;
     }
 `;

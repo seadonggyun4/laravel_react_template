@@ -24,9 +24,9 @@ const RentCarPage = () => {
                 }}>
                     {rentCars.map((item, index) => (
                         isMobile ? (
-                            <MobileProductCard item={item} key={index} reserve={'yes'} />
+                            <MobileProductCard item={item} key={index} reserve={'yes'} pay={'yes'}/>
                         ) : (
-                            <WebProductCard item={item} key={index} reserve={'yes'} />
+                            <WebProductCard item={item} key={index} reserve={'yes'} pay={'yes'}/>
                         )
                     ))}
                 </Products>

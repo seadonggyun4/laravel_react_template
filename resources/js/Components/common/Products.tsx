@@ -46,6 +46,7 @@ const ProductWrapper = styled.article`
         margin-bottom: 10px;
         font-size: 2rem;
         font-weight: bold;
+        font-family: 'Jua', sans-serif;
     }
 
     & > P {

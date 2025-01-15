@@ -70,6 +70,7 @@ const TextBox = styled.div`
         margin-bottom: 10px;
         font-size: 2rem;
         font-weight: bold;
+        font-family: 'Jua', sans-serif;
         background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

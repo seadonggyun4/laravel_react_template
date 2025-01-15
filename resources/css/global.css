@@ -1,9 +1,18 @@
 :root{
     color: var(--font-color);
     font-size: 1.1rem;
+    font-family: sans-serif;
 
     body{
         background-color: var(--bg-color);
         overflow-x: hidden;
     }
+}
+
+/* font */
+@font-face {
+    font-family: 'Jua';
+    src: url('./font/Jua-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
