@@ -34,10 +34,19 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
 
     const toggleDetail = (e: React.MouseEvent) => {
         e.stopPropagation();
+
         const cardRect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+
         setLeftCard(cardRect.left < window.innerWidth / 2);
+
+        window.scrollTo({
+            top: window.scrollY + cardRect.top - window.innerHeight / 2, // Center the card vertically in the viewport
+            behavior: "smooth",
+        });
+
         toggleShowCardDetail(showCardDetail === item.title ? null : item.title);
     };
+
 
     const handleOutsideClick = (e: MouseEvent) => {
         if (!(e.target as HTMLElement).closest('.card-container')) {
