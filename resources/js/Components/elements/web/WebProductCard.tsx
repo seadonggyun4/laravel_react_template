@@ -108,9 +108,9 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
                             합리적인 금액에 제공해드립니다. 😘
                         </span>
                         <div className="detail-btns">
-                            <button>사진 보기</button>
-                            <button>차량 상세</button>
-                            <button>영상 보기</button>
+                            <button>사진 보기 📷</button>
+                            <button>차량 상세 🚘</button>
+                            <button>영상 보기 🎥</button>
                         </div>
                     </DetailWrap>
                     <LinkWrap>
@@ -258,11 +258,11 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $is
 const DetailBox = styled.div<{ $leftCard: boolean }>`
     position: absolute;
     top: 0;
-    right: ${({ $leftCard }) => ($leftCard ? "-90%" : "105%")};
+    right: ${({ $leftCard }) => ($leftCard ? "-115%" : "105%")};
     display: flex;
     flex-direction: column;
     row-gap: 15px;
-    width: 250px;
+    width: 300px;
     height: 100%;
     border-radius: 15px;
     background-color: var(--disabled-color);
@@ -314,7 +314,7 @@ const DetailWrap = styled.div`
         column-gap: 10px;
 
         button {
-            padding: 3px;
+            padding: 5px;
             border-radius: 5px;
             background-color: var(--border-secondary-color);
             transition: 0.3s ease-in-out;
