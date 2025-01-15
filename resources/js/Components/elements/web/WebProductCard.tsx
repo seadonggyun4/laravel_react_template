@@ -40,7 +40,7 @@ const WebProductCard: React.FC<WebProductCardProps> = ({ item, reserve, pay }) =
         setLeftCard(cardRect.left < window.innerWidth / 2);
 
         window.scrollTo({
-            top: window.scrollY + cardRect.top - window.innerHeight / 2, // Center the card vertically in the viewport
+            top: window.scrollY + cardRect.top - window.innerHeight / 3, // Center the card vertically in the viewport
             behavior: "smooth",
         });
 
