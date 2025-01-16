@@ -1,3 +1,23 @@
 {
+    "home": "Home",
+    "rentcar": "Rent Car",
+    "service": "Service",
+    "customer_support": "CS",
+    "reservation": "Reservation",
+    "rentcar_reservation": "Rent Car Reservation",
+    "limited_specials": "Limited Specials",
+    "angel_key_discount": "Angel Key Discount",
+    "notice": "Notice",
+    "rental_guide": "Rental Guide",
+    "reservation_consulting": "Reservation Consulting",
+    "cancellation_request": "Cancellation Request",
+    "faq": "FAQ",
+    "events_benefits": "Events / Benefits",
+    "reviews": "Reviews",
+    "travel_pick": "Travel Pick",
+    "manuals_by_model": "Manuals by Model",
+    "purchase_option_table": "Purchase Option Table",
+    "login_signup": "Login / Sign Up",
+    "reservation_confirm_payment": "Reservation Confirm / Payment",
     "login": "Login"
 }

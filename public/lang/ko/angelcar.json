@@ -1,3 +1,23 @@
 {
+    "home": "HOME",
+    "rentcar": "렌터카",
+    "service": "서비스",
+    "customer_support": "고객센터",
+    "reservation": "예약",
+    "rentcar_reservation": "렌터카예약",
+    "limited_specials": "한정특가",
+    "angel_key_discount": "엔젤KEY할인",
+    "notice": "공지 사항",
+    "rental_guide": "대여 안내",
+    "reservation_consulting": "예약 상담",
+    "cancellation_request": "취소 요청(결항)",
+    "faq": "자주 묻는 질문",
+    "events_benefits": "이벤트 / 혜택",
+    "reviews": "이용 후기",
+    "travel_pick": "트래블 Pick",
+    "manuals_by_model": "차종별 매뉴얼",
+    "purchase_option_table": "차량 옵션표(구매)",
+    "login_signup": "로그인/회원가입",
+    "reservation_confirm_payment": "예약확인/결제",
     "login": "로그인"
 }

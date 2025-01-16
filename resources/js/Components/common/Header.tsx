@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
-import { NavMenu, NaveContentMenu } from "@/constants/routes";
+import { getNavMenu, getNaveContentMenu } from "@/constants/routes";
 import { useTranslation } from "react-i18next";
-import initI18n from "@/utils/i18n";
-import i18n from "i18next";
+import { useLanguage } from "@/ux/provider/Language";
 
 const Header: React.FC = () => {
     const [hoversed, setHoversed] = useState<string | null>(null);
-    const [currentLocale, setCurrentLocale] = useState<string>('ko'); // 현재 언어 상태
     const { url } = usePage();
     const firstPath = `/${url.split("/")[1]}`;
     const { t } = useTranslation();
+    const { currentLocale, changeLanguage } = useLanguage();
 
-    // 언어 변경 함수
-    const changeLanguage = async (locale: string) => {
-        if (locale === currentLocale) return; // 동일 언어 선택 시 무시
-
-        try {
-            const module = "angelcar"; // 단일 모듈로 변경
-            await initI18n(locale, module); // 필요한 모듈 로드
-            setCurrentLocale(locale); // React 상태 업데이트
-        } catch (error) {
-            console.error("Error initializing i18n:", error);
-        }
-    };
+    const NavMenu = getNavMenu(t);
+    const NaveContentMenu = getNaveContentMenu(t);
 
     // 활성 메뉴 찾기
     const activeMenu: string | undefined = Object.keys(NaveContentMenu).find((parentKey) =>
@@ -34,7 +23,6 @@ const Header: React.FC = () => {
     // 초기 설정
     useEffect(() => {
         setHoversed(firstPath);
-        setCurrentLocale(i18n.language || "ko"); // i18n 초기 언어 동기화
     }, [firstPath]);
 
     return (
@@ -46,14 +34,14 @@ const Header: React.FC = () => {
                     </Logo>
                     <RightSection>
                         <LoginButton type="button" className="login">
-                            {t('login')}
+                            {t("login")}
                         </LoginButton>
                         <LanguageDropdown>
-                            <button type="button">
-                                {currentLocale === 'ko' ? '한글' : 'English'} ▾
+                            <button type="button" className="more">
+                                {currentLocale === 'ko' ? '한국어' : 'English'} ▾
                             </button>
                             <DropdownMenu>
-                                <DropdownItem onClick={() => changeLanguage('ko')}>한글</DropdownItem>
+                                <DropdownItem onClick={() => changeLanguage('ko')}>한국어</DropdownItem>
                                 <DropdownItem onClick={() => changeLanguage('en')}>English</DropdownItem>
                             </DropdownMenu>
                         </LanguageDropdown>

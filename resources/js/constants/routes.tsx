@@ -1,3 +1,5 @@
+import { TFunction } from "i18next";
+
 interface NavItem {
     title: string;
     link: string;
@@ -5,39 +7,38 @@ interface NavItem {
 
 type NaveContentMenuType = Record<string, NavItem[]>;
 
-const NavMenu: NavItem[] = [
-    { title: "Home", link: "/" },
-    { title: "렌터카", link: "/rentcar" },
-    { title: "서비스", link: "/service" },
-    { title: "고객센터", link: "/cs" },
-    { title: "예약", link: "/reservation" },
+const getNavMenu = (t: TFunction): NavItem[] => [
+    { title: t("home"), link: "/" },
+    { title: t("rentcar"), link: "/rentcar" },
+    { title: t("service"), link: "/service" },
+    { title: t("customer_support"), link: "/cs" },
+    { title: t("reservation"), link: "/reservation" },
 ];
 
-const NaveContentMenu: NaveContentMenuType = {
+const getNaveContentMenu = (t: TFunction): NaveContentMenuType => ({
     "/rentcar": [
-        { title: "렌터카예약", link: "/rentcar/reservation" },
-        { title: "한정특가", link: "/rentcar/limited" },
+        { title: t("rentcar_reservation"), link: "/rentcar/reservation" },
+        { title: t("limited_specials"), link: "/rentcar/limited" },
     ],
     "/service": [
-        { title: "엔젤KEY할인", link: "/service/key" },
+        { title: t("angel_key_discount"), link: "/service/key" },
     ],
     "/cs": [
-        { title: "공지 사항", link: "/cs/notice" },
-        { title: "대여 안내", link: "/cs/rental-guide" },
-        { title: "예약 상담", link: "/cs/reservation-consulting" },
-        { title: "취소 요청(결항)", link: "/cs/cancellation" },
-        { title: "자주 묻는 질문", link: "/cs/faq" },
-        { title: "이벤트 / 혜택", link: "/cs/events" },
-        { title: "이용 후기", link: "/cs/reviews" },
-        { title: "트래블 Pick", link: "/cs/travel-pick" },
-        { title: "차종별 매뉴얼", link: "/cs/manuals" },
-        { title: "차량 옵션표(구매)", link: "/cs/options" },
+        { title: t("notice"), link: "/cs/notice" },
+        { title: t("rental_guide"), link: "/cs/rental-guide" },
+        { title: t("reservation_consulting"), link: "/cs/reservation-consulting" },
+        { title: t("cancellation_request"), link: "/cs/cancellation" },
+        { title: t("faq"), link: "/cs/faq" },
+        { title: t("events_benefits"), link: "/cs/events" },
+        { title: t("reviews"), link: "/cs/reviews" },
+        { title: t("travel_pick"), link: "/cs/travel-pick" },
+        { title: t("manuals_by_model"), link: "/cs/manuals" },
+        { title: t("purchase_option_table"), link: "/cs/options" },
     ],
     "/reservation": [
-        { title: "로그인/회원가입", link: "/reservation/login" },
-        { title: "예약확인/결제", link: "/reservation/confirm" },
+        { title: t("login_signup"), link: "/reservation/login" },
+        { title: t("reservation_confirm_payment"), link: "/reservation/confirm" },
     ],
-};
+});
 
-
-export {NavMenu, NaveContentMenu};
+export { getNavMenu, getNaveContentMenu };
