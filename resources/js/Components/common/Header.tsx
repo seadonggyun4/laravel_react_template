@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
 import { NavMenu, NaveContentMenu } from "@/constants/routes";
-import { useTranslation } from 'react-i18next';
-import initI18n from '@/utils/i18n';
+import { useTranslation } from "react-i18next";
+import initI18n from "@/utils/i18n";
 import i18n from "i18next";
 
 const Header: React.FC = () => {
@@ -12,22 +12,18 @@ const Header: React.FC = () => {
     const { url } = usePage();
     const firstPath = `/${url.split("/")[1]}`;
     const { t } = useTranslation();
-    const { component } = usePage(); // 현재 Inertia 페이지 컴포넌트 이름
-
-    const resolvePageComponentPath = (component: string): string => {
-        return `../Pages/${component}`; // 빌드 후 실제 파일 구조에 맞게 경로 생성
-    };
 
     // 언어 변경 함수
     const changeLanguage = async (locale: string) => {
-        // 동적 import를 사용하여 현재 페이지 컴포넌트 로드
-        const pagePath = resolvePageComponentPath(component); // 경로 생성
-        const page = (await import(pagePath)).default;
-        const modules = page.modules || []; // 페이지에서 정의된 modules 가져오기
-
         if (locale === currentLocale) return; // 동일 언어 선택 시 무시
-        await initI18n(locale, modules); // 필요한 모듈 로드
-        setCurrentLocale(locale); // React 상태 업데이트
+
+        try {
+            const module = "angelcar"; // 단일 모듈로 변경
+            await initI18n(locale, module); // 필요한 모듈 로드
+            setCurrentLocale(locale); // React 상태 업데이트
+        } catch (error) {
+            console.error("Error initializing i18n:", error);
+        }
     };
 
     // 활성 메뉴 찾기
@@ -38,7 +34,7 @@ const Header: React.FC = () => {
     // 초기 설정
     useEffect(() => {
         setHoversed(firstPath);
-        setCurrentLocale(i18n.language || "en"); // i18n 초기 언어 동기화
+        setCurrentLocale(i18n.language || "ko"); // i18n 초기 언어 동기화
     }, [firstPath]);
 
     return (
@@ -53,11 +49,11 @@ const Header: React.FC = () => {
                             {t('login')}
                         </LoginButton>
                         <LanguageDropdown>
-                            <button type="button" className="more">
-                                {currentLocale === 'ko' ? '한국어' : 'English'} ▾
+                            <button type="button">
+                                {currentLocale === 'ko' ? '한글' : 'English'} ▾
                             </button>
                             <DropdownMenu>
-                                <DropdownItem onClick={() => changeLanguage('ko')}>한국어</DropdownItem>
+                                <DropdownItem onClick={() => changeLanguage('ko')}>한글</DropdownItem>
                                 <DropdownItem onClick={() => changeLanguage('en')}>English</DropdownItem>
                             </DropdownMenu>
                         </LanguageDropdown>
@@ -100,7 +96,7 @@ const Header: React.FC = () => {
     );
 };
 
-// HeaderContainer
+// Styled Components
 const HeaderContainer = styled.header`
     position: fixed;
     top: 0;
@@ -110,7 +106,6 @@ const HeaderContainer = styled.header`
     background-color: #ffff;
 `;
 
-// HeaderBox
 const HeaderBox = styled.div`
     display: flex;
     justify-content: center;
@@ -235,18 +230,14 @@ const LanguageDropdown = styled.div`
     position: relative;
     display: inline-block;
 
-    .more {
-        background-color: #f8f8f8;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        padding: 8px 12px;
-        cursor: pointer;
-        font-size: 14px;
-        color: #333;
-        transition: background-color 0.2s;
+    button {
+        padding: 0.625rem 0;
+        width: 80px;
+        transition: 0.3s;
+        border-left: 2px solid var(--border-secondary-color);
 
         &:hover {
-            background-color: #eaeaea;
+            color: var(--primary-color);
         }
     }
 
@@ -261,10 +252,10 @@ const DropdownMenu = styled.div`
     top: 100%;
     left: 0;
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 10;
     min-width: 120px;
     padding: 8px 0;
 `;
@@ -272,12 +263,12 @@ const DropdownMenu = styled.div`
 const DropdownItem = styled.div`
     padding: 8px 12px;
     font-size: 14px;
-    color: #333;
     cursor: pointer;
     transition: background-color 0.2s;
 
     &:hover {
-        background-color: #f0f0f0;
+        background-color: var(--disabled-color);
+        color: var(--primary-color);
     }
 `;
 

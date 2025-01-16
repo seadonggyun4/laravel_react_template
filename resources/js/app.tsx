@@ -28,9 +28,7 @@ const userLocale = document.documentElement.lang || 'ko'; // HTML lang 속성을
                 import.meta.glob('./Pages/**/*.tsx')
             )).default;
 
-            // 페이지별 필요한 모듈 로드
-            const modules = page.modules || []; // 페이지가 필요로 하는 모듈
-            await initI18n(userLocale, modules); // JSON 파일 로드 및 i18n 초기화
+            await initI18n(userLocale, 'angelcar'); // JSON 파일 로드 및 i18n 초기화
 
             return page;
         },

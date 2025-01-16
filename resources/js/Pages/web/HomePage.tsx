@@ -64,9 +64,6 @@ export default function HomePage() {
     );
 }
 
-HomePage.modules = ['header', 'common'];
-
-
 const BannerBox = styled.div`
     width: 100%;
 
