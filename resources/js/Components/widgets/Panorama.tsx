@@ -17,24 +17,26 @@ const Panorama: React.FC = () => {
     ]; // public 폴더에서 이미지를 불러옴
 
     return (
-        <Wrap>
-            <Video src={bgVideo} loop autoPlay muted></Video>
-            <TextContent>
-                <h2>놓치지 마세요! <span>한정 프로모션!</span></h2>
-                <p>지금 호로록 들어오멍 특별한 혜택 챙겨갑써예! 😃</p>
-            </TextContent>
-            <Circle>
-                {images.map((image, index) => (
-                    <Article key={index} className={`face${index + 1}`}>
-                        <Inner>
-                            <ImageContainer>
-                                <img src={image} alt={`Panorama ${index + 1}`} />
-                            </ImageContainer>
-                        </Inner>
-                    </Article>
-                ))}
-            </Circle>
-        </Wrap>
+        <PanoramaSection>
+            <PanoramaWrapper>
+                <Video src={bgVideo} loop autoPlay muted></Video>
+                <TextContent>
+                    <h2>놓치지 마세요! <span>한정 프로모션!</span></h2>
+                    <p>지금 호로록 들어오멍 특별한 혜택 챙겨갑써예! 😃</p>
+                </TextContent>
+                <Circle>
+                    {images.map((image, index) => (
+                        <Article key={index} className={`face${index + 1}`}>
+                            <Inner>
+                                <ImageContainer>
+                                    <img src={image} alt={`Panorama ${index + 1}`} />
+                                </ImageContainer>
+                            </Inner>
+                        </Article>
+                    ))}
+                </Circle>
+            </PanoramaWrapper>
+        </PanoramaSection>
     );
 };
 
@@ -51,15 +53,29 @@ const rotateAnimation = keyframes`
     }
 `;
 
-const Wrap = styled.section`
+const PanoramaSection = styled.section`
     display: flex;
     justify-content: center;
     width: 100%;
     height: 390px;
+`;
+
+const PanoramaWrapper = styled.div`
+    width: var(--section-width);
+    height: 100%;
     overflow: hidden;
     perspective: 580px;
     position: relative;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
+    }
 `;
+
+
 
 const Video = styled.video`
     position: absolute;
@@ -88,7 +104,6 @@ const TextContent = styled.div`
 
     p {
         font-size: 1rem;
-        color: var(--border-color);
     }
 
     @media (max-width: ${MOBILE_WIDTH}px) {
@@ -110,7 +125,7 @@ const Circle = styled.section`
     margin-top: -200px;
     width: 350px;
     height: 100%;
-    animation: ${rotateAnimation} linear 60s infinite alternate;
+    animation: ${rotateAnimation} linear 40s infinite alternate;
     transform-style: preserve-3d;
 `;
 

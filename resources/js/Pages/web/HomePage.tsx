@@ -32,9 +32,7 @@ export default function HomePage() {
                     )
                 ))}
             </Products>
-            <BannerBox>
-                <img src={Banner} alt="banner" />
-            </BannerBox>
+            <Panorama />
             <Products text={{
                 title: '수입/전기 상품',
                 description: '#5년이내 #블박구비 #EV3입고!'
@@ -47,7 +45,9 @@ export default function HomePage() {
                     )
                 ))}
             </Products>
-            <Panorama />
+            {/*<BannerBox>*/}
+            {/*    <img src={Banner} alt="banner" />*/}
+            {/*</BannerBox>*/}
             <Products text={{
                 title: '한정 특가상품',
                 description: '#지정 기간내 사용 #최대50% #최소5%'
