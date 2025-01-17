@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             <HeaderBox>
                 <div>
                     <Logo>
-                        <Link href="/">angelcar</Link>
+                        <Link href="/public">angelcar</Link>
                     </Logo>
                     <RightSection>
                         <LoginButton type="button" className="login">

@@ -330,3 +330,15 @@ export const salesPromotions: Promotion[] = [
         img: '/assets/img/promotion/sale6.png'
     },
 ]
+
+
+export const stories = [
+    { image: "https://tympanus.net/Development/ColumnScroll/1.04213a58.jpg", title: "Cyber Blue", year: "2011" },
+    { image: "https://tympanus.net/Development/ColumnScroll/2.3ff1fdb6.jpg", title: "Gnostic Will", year: "2012" },
+    { image: "https://tympanus.net/Development/ColumnScroll/3.b606be87.jpg", title: "French Kiss", year: "2013" },
+    { image: "https://tympanus.net/Development/ColumnScroll/4.24fd614c.jpg", title: "Half Life", year: "2014" },
+    { image: "https://tympanus.net/Development/ColumnScroll/5.d13f5e61.jpg", title: "Love Boat", year: "2015" },
+    { image: "https://tympanus.net/Development/ColumnScroll/6.786c7db4.jpg", title: "Golden Ray", year: "2016" },
+    { image: "https://tympanus.net/Development/ColumnScroll/7.df95fe5c.jpg", title: "Blame Game", year: "2017" },
+    { image: "https://tympanus.net/Development/ColumnScroll/8.e7faf38e.jpg", title: "Lone Dust", year: "2018" },
+];

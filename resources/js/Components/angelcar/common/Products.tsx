@@ -36,6 +36,11 @@ const ProductSection = styled.section`
     width: 100%;
     height: 100%;
     padding: 3rem 0;
+
+
+    @media (max-width: ${MOBILE_WIDTH}px) {
+        padding: 2rem 0;
+    }
 `
 
 const ProductWrapper = styled.article`
@@ -44,8 +49,7 @@ const ProductWrapper = styled.article`
 
     & > h3{
         margin-bottom: 10px;
-        font-size: 2rem;
-        font-weight: bold;
+        font-size: 1.5rem;
         font-family: 'Jua', sans-serif;
     }
 
@@ -55,14 +59,12 @@ const ProductWrapper = styled.article`
 
 
     @media (max-width: ${MOBILE_WIDTH}px) {
-        padding: 1rem;
-
         & > h3{
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
 
         & > P {
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
     }
 `

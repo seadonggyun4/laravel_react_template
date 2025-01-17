@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import PageLayout from "@/Layouts/PageLayout";
+import PageLayout from "@/Layouts/angelcar/PageLayout";
 import { Link } from "@inertiajs/react";
 
 const NotFoundPage = () => {

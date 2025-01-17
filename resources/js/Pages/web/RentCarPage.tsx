@@ -1,11 +1,11 @@
-import PageLayout from "@/Layouts/PageLayout";
+import PageLayout from "@/Layouts/angelcar/PageLayout";
 import {bestPromotions, premiumPromotions} from "@/data";
-import WebProductCard from "@/Components/elements/web/WebProductCard";
-import Products from "@/Components/common/Products";
+import WebProductCard from "@/Components/angelcar/elements/web/WebProductCard";
+import Products from "@/Components/angelcar/common/Products";
 import styled from "styled-components";
-import WebSearchSection from "@/Components/common/web/WebSearch";
-import WebRecommended from "@/Components/common/web/WebRecommended";
-import MobileProductCard from "@/Components/elements/mobile/MobileProductCard";
+import WebSearchSection from "@/Components/angelcar/common/web/WebSearch";
+import WebRecommended from "@/Components/angelcar/common/web/WebRecommended";
+import MobileProductCard from "@/Components/angelcar/elements/mobile/MobileProductCard";
 import React from "react";
 import {useDeviceSize} from "@/ux/provider/DeviceSize";
 

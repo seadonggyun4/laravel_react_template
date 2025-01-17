@@ -1,11 +1,11 @@
-import PageLayout from "@/Layouts/PageLayout";
-import Products from "@/Components/common/Products";
-import WebProductCard from "@/Components/elements/web/WebProductCard";
+import PageLayout from "@/Layouts/angelcar/PageLayout";
+import Products from "@/Components/angelcar/common/Products";
+import WebProductCard from "@/Components/angelcar/elements/web/WebProductCard";
 import {salesPromotions} from "@/data";
 import styled from "styled-components";
-import WebSearchSection from "@/Components/common/web/WebSearch";
+import WebSearchSection from "@/Components/angelcar/common/web/WebSearch";
 import { useDeviceSize } from "@/ux/provider/DeviceSize";
-import MobileProductCard from "@/Components/elements/mobile/MobileProductCard";
+import MobileProductCard from "@/Components/angelcar/elements/mobile/MobileProductCard";
 import React from "react";
 
 const LimitedCarPage = () => {

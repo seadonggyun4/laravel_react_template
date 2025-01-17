@@ -1,8 +1,8 @@
 import React from 'react';
 import { Head } from '@inertiajs/react';
-import Header from '@/Components/common/Header';
-import Footer from '@/Components/common/Footer';
-import PopUpBg from "@/Components/common/PopUpBg";
+import Header from '@/Components/angelcar/common/Header';
+import Footer from '@/Components/angelcar/common/Footer';
+import PopUpBg from "@/Components/angelcar/common/PopUpBg";
 import styled from 'styled-components';
 import { useShowPopUp } from "@/ux/provider/ShowPopUp";
 
@@ -34,6 +34,7 @@ const PageWrapper = styled.div`
 
 const Main = styled.main`
     padding-top: var(--header-height);
+    padding-bottom: 3rem;
     width: 100%;
     height: 100%;
     min-height: 100vh;

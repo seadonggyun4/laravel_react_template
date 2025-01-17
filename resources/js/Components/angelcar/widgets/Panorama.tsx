@@ -69,10 +69,6 @@ const PanoramaWrapper = styled.div`
     border-radius: 15px;
     cursor: pointer;
     transition: .3s ease-in-out;
-
-    &:hover {
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
-    }
 `;
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
-import WebProductCard from "@/Components/elements/web/WebProductCard";
+import WebProductCard from "@/Components/angelcar/elements/web/WebProductCard";
 import { bestPromotions } from "@/data";
 import { MOBILE_WIDTH } from "@/constants";
 
@@ -68,7 +68,7 @@ const TextBox = styled.div`
 
     & > h3 {
         margin-bottom: 10px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         font-weight: bold;
         font-family: 'Jua', sans-serif;
         background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
@@ -89,7 +89,7 @@ const TextBox = styled.div`
         }
 
         & > p {
-            font-size: 1rem;
+            font-size: 0.8rem;
         }
     }
 `;
