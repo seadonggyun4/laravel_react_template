@@ -21,7 +21,7 @@ const StorySelectBox: React.FC<StorySelectBoxProps> = ({ stories, setkey }) => {
     };
 
     const renderMarqueeGroups = (reverse = false) => (
-        <Marquee reverse={reverse}>
+        <Marquee $reverse={reverse}>
             {[...Array(2)].map((_, groupIndex) => (
                 <MarqueeGroup key={groupIndex}>
                     {stories.map((story, index) => (
@@ -68,7 +68,7 @@ const Wrapper = styled.article`
     height: 600px;
 `;
 
-const Marquee = styled.div<{ reverse?: boolean }>`
+const Marquee = styled.div<{ $reverse?: boolean }>`
     display: flex;
     flex-direction: column;
     user-select: none;
@@ -78,7 +78,7 @@ const Marquee = styled.div<{ reverse?: boolean }>`
     overflow: hidden;
 
     & > div {
-        animation-direction: ${({ reverse }) => (reverse ? "reverse" : "normal")};
+        animation-direction: ${({ $reverse }) => ($reverse ? "reverse" : "normal")};
     }
 
     &:hover > div {
@@ -105,7 +105,7 @@ const Item = styled.div`
     background: #ffff;
     cursor: pointer;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
     overflow: hidden;
 
     & > div {

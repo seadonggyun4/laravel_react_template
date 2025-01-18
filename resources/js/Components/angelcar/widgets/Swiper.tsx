@@ -158,7 +158,7 @@ const NavigationBtn = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0.625rem;
-    border-radius: 0.9375rem;
+    border-radius: var(--button-border-radius);
     background-color: rgba(0, 0, 0, 0.5);
 
     & span {
@@ -184,7 +184,7 @@ const NavigationTag = styled.ul`
     & li {
         padding: 0.625rem;
         border: 0.0625rem solid var(--border-color);
-        border-radius: 0.9375rem;
+        border-radius: var(--tag-border-radius);
         font-size: 0.8rem;
         font-weight: bold;
         cursor: pointer;

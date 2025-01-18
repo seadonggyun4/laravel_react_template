@@ -184,7 +184,7 @@ const TagBox = styled.div`
 
     & > span {
         padding: 3px;
-        border-radius: 5px;
+        border-radius: var(--button-border-radius);
         border: 1px solid var(--border-color);
         font-size: 0.8rem;
         font-weight: 600;
@@ -222,13 +222,13 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined, $is
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
     background-color: #ffffff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
     perspective: 1000px;
     cursor: pointer;
-    z-index: ${({ $isActive }) => ($isActive ? 1000 : 0)};
+    z-index: ${({ $isActive }) => ($isActive ? 'var(--popup-content-zindex)' : 0)};
 
     & > .year {
         position: absolute;
@@ -263,7 +263,7 @@ const DetailBox = styled.div<{ $leftCard: boolean }>`
     row-gap: 15px;
     width: 300px;
     height: 100%;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
     background-color: var(--disabled-color);
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
     opacity: 1;
@@ -314,7 +314,7 @@ const DetailWrap = styled.div`
 
         button {
             padding: 5px;
-            border-radius: 5px;
+            border-radius: var(--button-border-radius);
             background-color: var(--border-secondary-color);
             transition: 0.3s ease-in-out;
 
@@ -352,8 +352,8 @@ const LinkWrap = styled.div`
     justify-content: center;
     row-gap: 10px;
     width: 100%;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
     background-color: var(--primary-color);
 
     a {
@@ -362,7 +362,7 @@ const LinkWrap = styled.div`
         justify-content: space-between;
         padding: 15px;
         width: 70%;
-        border-radius: 15px;
+        border-radius: var(--button-border-radius);
         font-size: 1rem;
         transition: 0.3s ease-in-out;
 

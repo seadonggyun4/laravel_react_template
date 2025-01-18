@@ -127,7 +127,7 @@ const RightSection = styled.div`
 
 const LoginButton = styled.button`
     padding: 0.625rem 1.25rem;
-    border-radius: 0.3125rem;
+    border-radius: var(--button-border-radius);
     border: 0.0625rem solid var(--border-color);
     transition: 0.3s ease-in-out;
 
@@ -155,7 +155,7 @@ const StyledLink = styled(Link)`
     font-size: 1rem;
     text-decoration: none;
     padding: 0.3125rem;
-    border-radius: 0.3125rem;
+    border-radius: var(--button-border-radius);
     width: 5rem;
     text-align: center;
     transition: all 0.3s ease-in-out;
@@ -241,9 +241,9 @@ const DropdownMenu = styled.div`
     left: 0;
     background-color: white;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: var(--button-border-radius);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 10;
+    z-index: var(--show-content-zindex);
     min-width: 120px;
     padding: 8px 0;
 `;

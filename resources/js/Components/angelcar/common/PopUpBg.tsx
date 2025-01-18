@@ -35,7 +35,7 @@ const PopUpBgStyle = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 999;
+    z-index: var(--popup-bg-zindex);
     animation: ShowPopUpBg 0.3s ease-in-out forwards;
 
     @keyframes ShowPopUpBg {

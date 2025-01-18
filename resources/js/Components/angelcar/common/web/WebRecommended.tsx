@@ -57,7 +57,7 @@ const StyledWrapper = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 0;
+    padding: var(--section-padding) 0;
     width: 100%;
     height: 100%;
     background-color: rgb(247, 247, 249);
@@ -68,7 +68,7 @@ const TextBox = styled.div`
 
     & > h3 {
         margin-bottom: 10px;
-        font-size: 1.8rem;
+        font-size: var(--strong-b-font);
         font-weight: bold;
         font-family: 'Jua', sans-serif;
         background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
@@ -85,11 +85,11 @@ const TextBox = styled.div`
 
     @media (max-width: ${MOBILE_WIDTH}px) {
         & > h3 {
-            font-size: 1.5rem;
+            font-size: var(--strong-font);
         }
 
         & > p {
-            font-size: 0.8rem;
+            font-size: var(--p-m-font);
         }
     }
 `;
@@ -126,7 +126,7 @@ const StyledNavButton = styled.button`
     align-items: center;
     justify-content: center;
     top: 50%;
-    z-index: 2;
+    z-index: var(--show-content-zindex);
     cursor: pointer;
     border-radius: 50%;
     background-color: var(--primary-color);

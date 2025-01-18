@@ -47,7 +47,7 @@ const Wrapper = styled.div`
     width: 632px;
     height: 80%;
     padding: 0 3rem;
-    border-radius: 10px;
+    border-radius: var(--button-border-radius);
     background-color: #ffffff;
 `;
 
@@ -69,7 +69,7 @@ const Strong = styled.strong`
 const TextBox = styled.div`
     width: 100%;
     padding: 24px;
-    border-radius: 8px;
+    border-radius: var(--button-border-radius);
     text-align: center;
     background-color: var(--bg-secondary-color);
     font-size: 14px;
@@ -84,7 +84,7 @@ const LinkBox = styled.div`
     & > a {
         display: block;
         padding: 10px 20px;
-        border-radius: 5px;
+        border-radius: var(--button-border-radius);
         background-color: var(--primary-color);
         color: white;
         transition: 0.3s ease-in-out;

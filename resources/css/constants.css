@@ -23,4 +23,24 @@
 
     /* zindex */
     --header-zindex: 100;
+    --show-content-zindex: 10;
+    --popup-bg-zindex: 999;
+    --popup-content-zindex: 1000;
+
+    /* font */
+    --strong-b-font:1.8rem;
+    --strong-font: 1.5rem;
+    --strong-m-font:1rem;
+    --p-m-font:0.8rem;
+
+
+    /* border-radius */
+    --card-border-radius: 15px;
+    --button-border-radius: 5px;
+    --tag-border-radius: 0.9375rem;
+
+    /* section layouts */
+    --section-padding: 3rem;
+    --section-s-padding: 1rem;
+    --section-m-padding: 2rem;
 }

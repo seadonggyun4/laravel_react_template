@@ -22,7 +22,7 @@ const VideoCard = styled.div`
     height: 380px;
     background: var(--bg-secondary-color);
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
 
     iframe {
         position: absolute;

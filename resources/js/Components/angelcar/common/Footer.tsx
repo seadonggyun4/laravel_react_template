@@ -51,7 +51,7 @@ const FooterContainer = styled.footer`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.25rem 0;
+    padding: var(--section-m-padding) 0;
     width: 100%;
     background-color: #ffffff;
 `;

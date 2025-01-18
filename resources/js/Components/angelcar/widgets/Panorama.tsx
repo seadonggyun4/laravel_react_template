@@ -66,7 +66,7 @@ const PanoramaWrapper = styled.div`
     overflow: hidden;
     perspective: 580px;
     position: relative;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
     cursor: pointer;
     transition: .3s ease-in-out;
 `;
@@ -89,7 +89,7 @@ const TextContent = styled.div`
 
     h2 {
         margin-bottom: 10px;
-        font-size: 1.8rem;
+        font-size: var(--strong-b-font);
         font-weight: bold;
         font-family: 'Jua', sans-serif;
 
@@ -104,11 +104,11 @@ const TextContent = styled.div`
 
     @media (max-width: ${MOBILE_WIDTH}px) {
         h2 {
-            font-size: 1.5rem;
+            font-size: var(--strong-font);
         }
 
         p {
-            font-size: 0.8rem;
+            font-size: var(--p-m-font);
         }
     }
 `;
@@ -130,7 +130,7 @@ const Article = styled.article`
     top: 0;
     left: 0;
     width: 100%;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
     backface-visibility: hidden;
     overflow: hidden;
     transition: .3s ease-in-out;

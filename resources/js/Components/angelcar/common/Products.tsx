@@ -35,11 +35,11 @@ const ProductSection = styled.section`
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding: 3rem 0;
+    padding: var(--section-padding) 0;
 
 
     @media (max-width: ${MOBILE_WIDTH}px) {
-        padding: 2rem 0;
+        padding: var(--section-m-padding) 0;
     }
 `
 
@@ -49,7 +49,7 @@ const ProductWrapper = styled.article`
 
     & > h3{
         margin-bottom: 10px;
-        font-size: 1.5rem;
+        font-size: var(--strong-font);
         font-family: 'Jua', sans-serif;
     }
 
@@ -60,11 +60,11 @@ const ProductWrapper = styled.article`
 
     @media (max-width: ${MOBILE_WIDTH}px) {
         & > h3{
-            font-size: 1rem;
+            font-size: var(--strong-m-font);
         }
 
         & > P {
-            font-size: 0.8rem;
+            font-size: var(--p-m-font);
         }
     }
 `

@@ -113,7 +113,7 @@ const StyledDatePicker = styled(
         <ReactDatePicker {...props} ref={ref} />
     ))
 )<DatePickerProps>`
-    padding: 1rem;
+    padding: var(--section-s-padding);
     width: 100%;
     border: 2px solid var(--primary-color);
     border-top-left-radius: 15px;
@@ -135,8 +135,8 @@ const VehicleTypeSelecter = styled.div`
     width: 100%;
     padding: 1rem;
     border: 2px solid #ffffff;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
     background-color: #fff;
 `;
 
@@ -144,7 +144,7 @@ const VehicleTypeLabel = styled.label<{ $isChecked: boolean }>`
     display: flex;
     align-items: center;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: var(--button-border-radius);
     background-color: ${(props) => (props.$isChecked ? "var(--secondary-color)" : "var(--disabled-color)")};
     color: ${(props) => (props.$isChecked ? "#ffffff" : "#000000")};
     cursor: pointer;
@@ -169,7 +169,7 @@ const SearchButton = styled.button`
     background: linear-gradient(90deg, rgba(0,161,229,1) 50%, rgba(3,217,243,1) 100%);
     height: 100%;
     color: white;
-    border-radius: 5px;
+    border-radius: var(--button-border-radius);
     transition: .3s ease-in-out;
     font-size: 0.9rem;
     font-weight: bold;

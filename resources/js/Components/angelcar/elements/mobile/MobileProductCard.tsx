@@ -130,7 +130,7 @@ const TagBox = styled.div`
 
     & > span {
         padding: 3px;
-        border-radius: 5px;
+        border-radius: var(--button-border-radius);
         border: 1px solid var(--border-color);
         font-size: 0.8rem;
         font-weight: 600;
@@ -168,7 +168,7 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined }>`
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    border-radius: 15px;
+    border-radius: var(--card-border-radius);
     background-color: #ffffffff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 8px 24px;
@@ -221,7 +221,7 @@ const LinkWrap = styled.div`
         justify-content: space-between;
         padding: 15px;
         width: 70%;
-        border-radius: 20px;
+        border-radius: var(--button-border-radius);
         font-size: 1rem;
         transition: 0.3s ease-in-out;
 

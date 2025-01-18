@@ -59,12 +59,11 @@ const WebStoryVideoSection = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3rem 0;
+    padding: var(--section-padding) 0;
     width: 100%;
 
     @media (max-width: ${MOBILE_WIDTH}px) {
-        padding: 2rem 0;
-
+        padding: var(--section-m-padding) 0;
     }
 `
 
@@ -85,7 +84,7 @@ const StoryBox = styled.article`
 const TextContent = styled.div`
     & > h3{
         margin-bottom: 10px;
-        font-size: 1.5rem;
+        font-size: var(--strong-font);
         font-family: 'Jua', sans-serif;
     }
 
@@ -95,11 +94,11 @@ const TextContent = styled.div`
 
     @media (max-width: ${MOBILE_WIDTH}px) {
         & > h3{
-            font-size: 1rem;
+            font-size: var(--strong-m-font);
         }
 
         & > P {
-            font-size: 0.8rem;
+            font-size: var(--p-m-font);
         }
     }
 `
