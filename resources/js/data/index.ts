@@ -333,12 +333,12 @@ export const salesPromotions: Promotion[] = [
 
 
 export const stories = [
-    { image: "https://tympanus.net/Development/ColumnScroll/1.04213a58.jpg", title: "Cyber Blue", year: "2011" },
-    { image: "https://tympanus.net/Development/ColumnScroll/2.3ff1fdb6.jpg", title: "Gnostic Will", year: "2012" },
-    { image: "https://tympanus.net/Development/ColumnScroll/3.b606be87.jpg", title: "French Kiss", year: "2013" },
-    { image: "https://tympanus.net/Development/ColumnScroll/4.24fd614c.jpg", title: "Half Life", year: "2014" },
-    { image: "https://tympanus.net/Development/ColumnScroll/5.d13f5e61.jpg", title: "Love Boat", year: "2015" },
-    { image: "https://tympanus.net/Development/ColumnScroll/6.786c7db4.jpg", title: "Golden Ray", year: "2016" },
-    { image: "https://tympanus.net/Development/ColumnScroll/7.df95fe5c.jpg", title: "Blame Game", year: "2017" },
-    { image: "https://tympanus.net/Development/ColumnScroll/8.e7faf38e.jpg", title: "Lone Dust", year: "2018" },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/010.png", link:'https://www.youtube.com/watch?v=YrEhZ0vACPg' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%E1%84%92%E1%85%A9%E1%86%B7%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5-%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg", link:'https://www.youtube.com/watch?v=OclvaI3n0UI' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg", link:'https://www.youtube.com/watch?v=fVD_yZWBbJ8' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%EB%B2%9A%EA%BD%83%20%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C%20%EC%BD%94%EC%8A%A4%20%EC%8D%B8%EB%84%A4%EC%9D%BC_%ED%99%88%ED%8E%98%EC%9E%8A%EC%9A%A9.jpg", link:'https://www.youtube.com/watch?v=yYGTTy6NoKk' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%EC%97%94%EC%A0%A4%EC%B9%B4,%20%EC%A0%9C%EC%A3%BC%EB%8F%84%20%EC%97%AC%ED%96%89%EA%B8%B0%20%EC%8D%B8%EB%84%A4%EC%9D%BC_%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80.jpg", link:'https://www.youtube.com/watch?v=9FnHTFQjzUY' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/230210_%EC%99%B8%EA%B5%AD%EC%9D%B8%EB%8C%80%EC%97%AC%EC%98%81%EC%83%81_%EC%A0%95%EB%B0%A9%ED%96%A5%EC%8D%B8%EB%84%A4%EC%9D%BC(%EA%B5%AD%EB%AC%B8).png", link:'https://www.youtube.com/watch?v=XFc-bM9KB5M' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_%ED%95%9C%EB%9D%BC%EC%82%B0.jpg", link:'https://www.youtube.com/watch?v=Kkju5uKctwQ' },
+    { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%EC%97%B4%EB%91%90%EB%8B%AC%20%ED%8A%B8%EB%A0%88%ED%82%B9%20%ED%95%98%EC%9D%B4%EB%9D%BC%EC%9D%B4%ED%8A%B8.jpg", link:'https://www.youtube.com/watch?v=h5uXvd7KjGA' },
 ];

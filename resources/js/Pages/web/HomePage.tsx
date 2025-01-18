@@ -17,7 +17,6 @@ export default function HomePage() {
         <PageLayout title="제주도렌트카 | 제주엔젤카">
             <Swiper/>
             <WebSearSection/>
-            <WebStoryVideo />
             <Products text={{
                 title: '베스트 추천상품',
                 description: '#제주여행 #완전면책 #슈퍼면책'
@@ -30,19 +29,21 @@ export default function HomePage() {
                     )
                 ))}
             </Products>
+            <WebStoryVideo />
+            <Products text={{
+                title: '수입/전기 상품',
+                description: '#5년이내 #블박구비 #EV3입고!'
+            }}>
+                {premiumPromotions.map((item, index) => (
+                    isMobile ? (
+                        <MobileProductCard item={item} key={index} reserve={'yes'}/>
+                    ) : (
+                        <WebProductCard item={item} key={index} reserve={'yes'}/>
+                    )
+                ))}
+            </Products>
             <Panorama/>
-            {/*<Products text={{*/}
-            {/*    title: '수입/전기 상품',*/}
-            {/*    description: '#5년이내 #블박구비 #EV3입고!'*/}
-            {/*}}>*/}
-            {/*    {premiumPromotions.map((item, index) => (*/}
-            {/*        isMobile ? (*/}
-            {/*            <MobileProductCard item={item} key={index} reserve={'yes'}/>*/}
-            {/*        ) : (*/}
-            {/*            <WebProductCard item={item} key={index} reserve={'yes'}/>*/}
-            {/*        )*/}
-            {/*    ))}*/}
-            {/*</Products>*/}
+
             {/*<Products text={{*/}
             {/*    title: '한정 특가상품',*/}
             {/*    description: '#지정 기간내 사용 #최대50% #최소5%'*/}

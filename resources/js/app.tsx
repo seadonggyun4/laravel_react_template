@@ -1,6 +1,5 @@
-import '../css/app.css';
 import '../css/reset.css';
-import '../css/theme.css';
+import '../css/constants.css';
 import '../css/global.css';
 import '@/bootstrap';
 import initI18n from '@/utils/i18n';

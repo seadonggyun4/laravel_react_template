@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const YoutubeCard = ({ video = '5FOxW39B74g' }: { video?: string }) => {
+const YoutubeCard = ({ youTubeKey }: { youTubeKey: string }) => {
     return (
         <VideoCard>
             <iframe
-                src={`https://www.youtube.com/embed/${video}?autoplay=1&controls=1&mute=1&loop=1&playlist=${video}&modestbranding=1&rel=0&cc_load_policy=0&hl=ko&cc_lang_pref=&vq=hd1080`}
+                src={`https://www.youtube.com/embed/${youTubeKey}?autoplay=1&controls=1&mute=1&loop=1&playlist=${youTubeKey}&modestbranding=1&rel=0&cc_load_policy=0&hl=ko&cc_lang_pref=&vq=hd1080`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"

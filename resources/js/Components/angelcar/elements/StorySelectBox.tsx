@@ -1,104 +1,121 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { cutYoutubeKey } from "@/utils";
 
-
-
-// Data type definition
 interface Story {
     image: string;
-    title: string;
-    year: string;
+    link?: string;
 }
 
 interface StorySelectBoxProps {
     stories: Story[];
+    setkey: (key: string) => void;
 }
 
-const StorySelectBox: React.FC<StorySelectBoxProps> = ({ stories }) => {
-    // Split stories into 3 columns
-    const columns = [
-        stories.filter((_, i) => i % 3 === 0),
-        stories.filter((_, i) => i % 3 === 1),
-        stories.filter((_, i) => i % 3 === 2),
-    ];
+const StorySelectBox: React.FC<StorySelectBoxProps> = ({ stories, setkey }) => {
+    const clickItem = (url?: string) => {
+        if (url) {
+            const youTubeKey = cutYoutubeKey(url);
+            setkey(youTubeKey);
+        }
+    };
 
-    return (
-        <Columns>
-            {columns.map((columnStories, columnIndex) => (
-                <Column key={columnIndex} reverse={columnIndex % 2 === 0}>
-                    {columnStories.map((story, index) => (
-                        <Item key={index}>
-                            <ImageWrap>
-                                <img src={story.image} alt={story.title} />
-                            </ImageWrap>
-                            <Caption>
-                                <span>{story.title}</span> <br /> <span>{story.year}</span>
-                            </Caption>
+    const renderMarqueeGroups = (reverse = false) => (
+        <Marquee reverse={reverse}>
+            {[...Array(2)].map((_, groupIndex) => (
+                <MarqueeGroup key={groupIndex}>
+                    {stories.map((story, index) => (
+                        <Item
+                            key={`${groupIndex}-${index}`}
+                            onClick={() => clickItem(story.link)}
+                        >
+                            <div>
+                                <img src={story.image} alt={`Story ${index + 1}`} />
+                            </div>
                         </Item>
                     ))}
-                </Column>
+                </MarqueeGroup>
             ))}
-        </Columns>
+        </Marquee>
+    );
+
+    return (
+        <Wrapper>
+            {renderMarqueeGroups()}
+            {renderMarqueeGroups(true)}
+        </Wrapper>
     );
 };
 
 export default StorySelectBox;
 
-
 // Styled Components
-const Columns = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  overflow-y: hidden;
-    background: red;
-`;
-
-const Column = styled.div<{ reverse?: boolean }>`
-  --column-offset: 10vh;
-  display: flex;
-  flex-direction: ${({ reverse }) => (reverse ? "column-reverse" : "column")};
-  padding: var(--column-offset) 0;
-  animation: ${({ reverse }) => (reverse ? "adjust-position" : "none")} linear forwards;
-  animation-timeline: scroll(root block);
-
-  @keyframes adjust-position {
+const scrollY = keyframes`
     from {
-      transform: translateY(calc(-100% + 100vh));
+        transform: translateY(0);
     }
     to {
-      transform: translateY(calc(100% - 100vh));
+        transform: translateY(-120%);
     }
-  }
 `;
 
-const Item = styled.figure`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+const Wrapper = styled.article`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin: auto;
+    height: 600px;
 `;
 
-const ImageWrap = styled.div`
-  width: 100%;
-  aspect-ratio: 0.75;
-  border-radius: 1em;
-  overflow: hidden;
+const Marquee = styled.div<{ reverse?: boolean }>`
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    gap: 20px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0));
+    overflow: hidden;
 
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
+    & > div {
+        animation-direction: ${({ reverse }) => (reverse ? "reverse" : "normal")};
+    }
+
+    &:hover > div {
+        animation-play-state: paused;
+    }
 `;
 
-const Caption = styled.figcaption`
-  text-align: center;
-  margin-top: 0.5rem;
+const MarqueeGroup = styled.div`
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 100%;
+    animation: ${scrollY} 100s linear infinite;
 `;
 
+const Item = styled.div`
+    display: grid;
+    place-items: center;
+    width: 180px;
+    height: 180px;
+    background: #ffff;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 15px;
+    overflow: hidden;
 
+    & > div {
+        width: 100%;
+        height: 100%;
+    }
 
+    & > div > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+`;

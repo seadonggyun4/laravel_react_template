@@ -45,7 +45,7 @@ Route::group(['prefix' => '/'], function () {
     });
 });
 
-// [엔젤카 메인 라우트]
+// [신한엔젤카 라우트]
 Route::group(['prefix' => '/sinhan'], function () {
     // Home Page
     Route::get('/', function () {

@@ -190,7 +190,6 @@ const StyledWebProductCard = styled.div<{ $showLinkWrap: string | undefined }>`
     }
 
     &:hover {
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 30px;
         ${({ $showLinkWrap }) =>
                 !$showLinkWrap &&
                 css`
