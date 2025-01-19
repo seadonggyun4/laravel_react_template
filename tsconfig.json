@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "typeRoots": ["./node_modules/@types", "./resources/js/types"],
+        "typeRoots": ["./node_modules/@types",
+            "./resources/js/common/types"
+        ],
         "target": "ESNext",
         "module": "ESNext",
         "jsx": "react-jsx",
