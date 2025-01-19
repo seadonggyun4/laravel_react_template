@@ -1,24 +1,30 @@
 import React from 'react';
 import { Head } from '@inertiajs/react';
-import Header from '@/common/components/Organisms/Header';
-import Footer from '@/common/components/Organisms/Footer';
-import PopUpBg from "@/common/components/widget/PopUpBg";
+import Header from '@/common/components/Organisms/shared/Header';
+import Footer from '@/common/components/Organisms/shared/Footer';
+import PopUpBg from "@/common/components/Organisms/PopUpBg";
 import styled from 'styled-components';
 import { useShowPopUp } from "@/common/ux/provider/ShowPopUp";
+import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/common/constants";
+import {getNavMenu, getNaveContentMenu} from "@/common/constants/routes";
+import {useTranslation} from "react-i18next";
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
     const { showCardDetail } = useShowPopUp();
+    const { t } = useTranslation();
+    const navMenu = getNavMenu(t)
+    const navContentMenu = getNaveContentMenu(t)
 
     const showPopUp = showCardDetail !== null;
 
     return (
         <PageWrapper>
             <Head title={title} />
-            <Header />
+            <Header navMenu={navMenu} navContentMenu={navContentMenu} headerItems={HEADER_ITEMS}/>
             <Main>
                 {children}
             </Main>
-            <Footer/>
+            <Footer articles={FOOTER_ARTICLES}/>
             <PopUpBg show={showPopUp}/>
         </PageWrapper>
     );

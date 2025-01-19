@@ -1,10 +1,10 @@
 import PageLayout from "@/sites/angelcar/layouts/PageLayout";
 import {bestPromotions, premiumPromotions} from "../../../../data";
 import WebProductCard from "@/common/components/Molecule/web/WebProductCard";
-import Products from "@/common/components/Organisms/Products";
+import Products from "@/common/components/Organisms/shared/Products";
 import styled from "styled-components";
 import WebSearchSection from "@/common/components/Organisms/web/WebSearch";
-import WebRecommended from "@/common/components/widget/web/WebRecommended";
+import WebRecommended from "@/sites/angelcar/components/widget/web/WebRecommended";
 import MobileProductCard from "@/common/components/Molecule/mobile/MobileProductCard";
 import React from "react";
 import {useDeviceSize} from "@/common/ux/provider/DeviceSize";

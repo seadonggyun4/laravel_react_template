@@ -1,5 +1,5 @@
 import PageLayout from "@/sites/angelcar/layouts/PageLayout";
-import Products from "@/common/components/Organisms/Products";
+import Products from "@/common/components/Organisms/shared/Products";
 import WebProductCard from "@/common/components/Molecule/web/WebProductCard";
 import {salesPromotions} from "../../../../data";
 import styled from "styled-components";

@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
-import { getNavMenu, getNaveContentMenu } from "@/common/constants/routes";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/common/ux/provider/Language";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    navMenu: { link: string; title: string }[]; // Navigation Menu 타입
+    navContentMenu: Record<string, { link: string; title: string }[]>; // Navigation Content 타입
+    headerItems: {
+        logoLink?: string;
+        options: {
+            login: boolean;
+            language: boolean;
+        };
+    };
+}
+
+const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems }) => {
     const [hoversed, setHoversed] = useState<string | null>(null);
     const { url } = usePage();
     const firstPath = `/${url.split("/")[1]}`;
     const { t } = useTranslation();
     const { currentLocale, changeLanguage } = useLanguage();
 
-    const NavMenu = getNavMenu(t);
-    const NaveContentMenu = getNaveContentMenu(t);
+    const { logoLink, options } = headerItems;
 
     // 활성 메뉴 찾기
-    const activeMenu: string | undefined = Object.keys(NaveContentMenu).find((parentKey) =>
-        NaveContentMenu[parentKey]?.some((subItem) => subItem.link === url)
+    const activeMenu: string | undefined = Object.keys(navContentMenu).find((parentKey) =>
+        navContentMenu[parentKey]?.some((subItem) => subItem.link === url)
     );
 
     // 초기 설정
@@ -30,28 +40,38 @@ const Header: React.FC = () => {
             <HeaderBox>
                 <div>
                     <Logo>
-                        <Link href="/">angelcar</Link>
+                        <Link href="/public">
+                            {logoLink ? (
+                                <img src={logoLink} alt="logo" />
+                            ) : (
+                                <p>angelcar</p>
+                            )}
+                        </Link>
                     </Logo>
                     <RightSection>
-                        <LoginButton type="button" className="login">
-                            {t("login")}
-                        </LoginButton>
-                        <LanguageDropdown>
-                            <button type="button" className="more">
-                                {currentLocale === 'ko' ? '한국어' : 'English'} ▾
-                            </button>
-                            <DropdownMenu>
-                                <DropdownItem onClick={() => changeLanguage('ko')}>한국어</DropdownItem>
-                                <DropdownItem onClick={() => changeLanguage('en')}>English</DropdownItem>
-                            </DropdownMenu>
-                        </LanguageDropdown>
+                        {options.login && (
+                            <LoginButton type="button" className="login">
+                                {t("login")}
+                            </LoginButton>
+                        )}
+                        {options.language && (
+                            <LanguageDropdown>
+                                <button type="button" className="more">
+                                    {currentLocale === "ko" ? "한국어" : "English"} ▾
+                                </button>
+                                <DropdownMenu>
+                                    <DropdownItem onClick={() => changeLanguage("ko")}>한국어</DropdownItem>
+                                    <DropdownItem onClick={() => changeLanguage("en")}>English</DropdownItem>
+                                </DropdownMenu>
+                            </LanguageDropdown>
+                        )}
                     </RightSection>
                 </div>
             </HeaderBox>
             <div onMouseLeave={() => !activeMenu && setHoversed(null)}>
                 <Nav>
                     <div>
-                        {NavMenu.map((item) => (
+                        {navMenu.map((item) => (
                             <StyledLink
                                 key={item.link}
                                 href={item.link}
@@ -63,10 +83,10 @@ const Header: React.FC = () => {
                         ))}
                     </div>
                 </Nav>
-                {(hoversed && NaveContentMenu[hoversed]) || (activeMenu && hoversed && NaveContentMenu[hoversed]) ? (
+                {(hoversed && navContentMenu[hoversed]) || (activeMenu && hoversed && navContentMenu[hoversed]) ? (
                     <NavContent>
                         <ul>
-                            {NaveContentMenu[hoversed || activeMenu!]?.map((item) => (
+                            {navContentMenu[hoversed || activeMenu!]?.map((item) => (
                                 <li key={item.link}>
                                     <SubLink
                                         href={item.link}
@@ -114,8 +134,16 @@ const Logo = styled.h1`
     align-items: center;
     font-weight: bold;
     font-size: 1.875rem;
+
     & > a{
+        display: block;
+        width: 200px;
         color: var(--primary-color);
+
+        & > img {
+            width: 100%;
+            object-fit: contain;
+        }
     }
 `;
 

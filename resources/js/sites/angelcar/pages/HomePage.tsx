@@ -1,14 +1,14 @@
 import React from "react";
-import Panorama from "@/common/components/widget/Panorama";
-import Swiper from "@/common/components/widget/Swiper";
+import Panorama from "@/sites/angelcar/components/widget/web/Panorama";
+import Swiper from "@/sites/angelcar/components/widget/web/Swiper";
 import PageLayout from "@/sites/angelcar/layouts/PageLayout";
 import WebProductCard from "@/common/components/Molecule/web/WebProductCard";
 import { bestPromotions, premiumPromotions, salesPromotions } from "../../../../data";
-import Products from "@/common/components/Organisms/Products";
+import Products from "@/common/components/Organisms/shared/Products";
 import WebSearSection from "@/common/components/Organisms/web/WebSearch";
 import MobileProductCard from "@/common/components/Molecule/mobile/MobileProductCard";
 import { useDeviceSize } from "@/common/ux/provider/DeviceSize";
-import WebStoryVideo from "@/common/components/widget/web/WebStoryVideo";
+import WebStoryVideo from "@/sites/angelcar/components/widget/web/WebStoryVideo";
 
 export default function HomePage() {
     const { isMobile } = useDeviceSize();
@@ -43,19 +43,6 @@ export default function HomePage() {
                 ))}
             </Products>
             <Panorama/>
-
-            {/*<Products text={{*/}
-            {/*    title: '한정 특가상품',*/}
-            {/*    description: '#지정 기간내 사용 #최대50% #최소5%'*/}
-            {/*}}>*/}
-            {/*    {salesPromotions.map((item, index) => (*/}
-            {/*        isMobile ? (*/}
-            {/*            <MobileProductCard item={item} key={index} reserve={'yes'}/>*/}
-            {/*        ) : (*/}
-            {/*            <WebProductCard item={item} key={index} reserve={'yes'}/>*/}
-            {/*        )*/}
-            {/*    ))}*/}
-            {/*</Products>*/}
         </PageLayout>
     );
 }

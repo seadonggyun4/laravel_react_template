@@ -3,17 +3,14 @@ import React, { useState, forwardRef } from "react";
 import ReactDatePicker, { DatePickerProps } from "react-datepicker";
 import { ko } from "date-fns/locale";
 import "react-datepicker/dist/react-datepicker.css";
-import '../../../../../css/library/datePicker.css'
-import { MOBILE_WIDTH } from "@/common/constants";
+import "../../../../../css/library/datePicker.css";
+import { MOBILE_WIDTH, VEHICLE_TYPES } from "@/common/constants";
 import { HiMiniMagnifyingGlassCircle } from "react-icons/hi2";
-
 
 const WebSearchSection = () => {
     const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([new Date(), new Date()]);
-    const [selectedType, setSelectedType] = useState("전체");
+    const [selectedType, setSelectedType] = useState<number>(0); // 초기값을 숫자로 설정
     const [startDate, endDate] = dateRange;
-
-    const vehicleTypes = ["전체", "경차", "소형", "중형", "고급", "RV", "승합", "수입", "전기"];
 
     const handleDateChange = (dates: [Date | null, Date | null]) => {
         setDateRange(dates);
@@ -47,18 +44,18 @@ const WebSearchSection = () => {
                         placeholderText="날짜와 시간을 선택하세요"
                     />
                     <VehicleTypeSelecter>
-                        {vehicleTypes.map((type) => (
-                            <div key={type}>
+                        {VEHICLE_TYPES.map((typeObj) => (
+                            <div key={typeObj.type}>
                                 <VehicleTypeRadio
                                     type="radio"
                                     name="vehicleType"
-                                    id={type}
-                                    value={type}
-                                    checked={selectedType === type}
-                                    onChange={() => setSelectedType(type)}
+                                    id={`vehicle-${typeObj.type}`}
+                                    value={typeObj.type}
+                                    checked={selectedType === typeObj.type}
+                                    onChange={() => setSelectedType(typeObj.type)}
                                 />
-                                <VehicleTypeLabel htmlFor={type} $isChecked={selectedType === type}>
-                                    {type}
+                                <VehicleTypeLabel htmlFor={`vehicle-${typeObj.type}`} $isChecked={selectedType === typeObj.type}>
+                                    {typeObj.title}
                                 </VehicleTypeLabel>
                             </div>
                         ))}
@@ -66,7 +63,7 @@ const WebSearchSection = () => {
                 </DataBox>
                 <SearchButton onClick={handleSearch}>
                     차량 검색하기
-                    <HiMiniMagnifyingGlassCircle/>
+                    <HiMiniMagnifyingGlassCircle />
                 </SearchButton>
             </SearchBox>
         </SearchSection>
@@ -74,6 +71,8 @@ const WebSearchSection = () => {
 };
 
 export default WebSearchSection;
+
+// Styled components remain unchanged...
 
 const SearchSection = styled.section`
     display: flex;
@@ -105,9 +104,8 @@ const DataBox = styled.div`
     @media (max-width: ${MOBILE_WIDTH}px) {
         width: 100%;
     }
-`
+`;
 
-// StyledDatePicker
 const StyledDatePicker = styled(
     forwardRef<ReactDatePicker, DatePickerProps>((props, ref) => (
         <ReactDatePicker {...props} ref={ref} />
@@ -128,7 +126,6 @@ const StyledDatePicker = styled(
     }
 `;
 
-// VehicleTypeSelecter
 const VehicleTypeSelecter = styled.div`
     display: flex;
     gap: 10px;
@@ -160,7 +157,6 @@ const VehicleTypeRadio = styled.input`
     display: none;
 `;
 
-// SearchButton
 const SearchButton = styled.button`
     display: flex;
     align-items: center;
@@ -170,11 +166,11 @@ const SearchButton = styled.button`
     height: 100%;
     color: white;
     border-radius: var(--button-border-radius);
-    transition: .3s ease-in-out;
+    transition: 0.3s ease-in-out;
     font-size: 0.9rem;
     font-weight: bold;
 
-    & > svg{
+    & > svg {
         font-size: 1.5rem;
     }
 

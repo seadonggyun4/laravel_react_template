@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
 import WebProductCard from "@/common/components/Molecule/web/WebProductCard";
-import { bestPromotions } from "../../../../../data";
+import { bestPromotions } from "../../../../../../data";
 import { MOBILE_WIDTH } from "@/common/constants";
 
 const MAX_VISIBILITY = 3;
