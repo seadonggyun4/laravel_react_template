@@ -11,22 +11,26 @@ import { createRoot } from 'react-dom/client';
 import { LanguageProvider } from '@/common/ux/provider/Language';
 import { DeviceSizeProvider } from '@/common/ux/provider/DeviceSize';
 import { ShowPopUpProvider } from '@/common/ux/provider/ShowPopUp';
+import {SUPPORT_LANGUAGE} from "@/common/constants";
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.
 const pages = import.meta.glob('./sites/**/pages/**/*.tsx');
+// 사이트에 대한 전역 변수
+let SITE = ''
 
 const resolvePage = async (name: string) => {
-    const site = name.split('/')[0] === '' ? 'angelcar' : name.split('/')[0];
+    SITE = name.split('/')[0] === '' ? 'angelcar' : name.split('/')[0];
     const pageName = name.split('/')[1];
 
+
     // 언어 세팅
-    const fullLanguage = navigator.language || 'ko';
-    const language = fullLanguage.split('-')[0];
-    const sessionLocale = sessionStorage.getItem('app_locale') || language;
-    await initI18n(sessionLocale, site);
+    const pathLocale = window.location.pathname.split('/')[1]; // URL에서 첫 번째 경로 추출
+    const foundLocale =
+        SUPPORT_LANGUAGE.find((lang) => lang.type === pathLocale) || SUPPORT_LANGUAGE[0]; // 유효한 언어인지 확인
+    await initI18n(foundLocale.type, SITE);
 
     // 동적 경로 생성
-    const targetPath = `./sites/${site}/pages/${pageName}.tsx`;
+    const targetPath = `./sites/${SITE}/pages/${pageName}.tsx`;
 
     // 비동기 페이지 로드
     const page = await pages[targetPath]();
@@ -36,11 +40,11 @@ const resolvePage = async (name: string) => {
 // Inertia App 생성
 (async () => {
     await createInertiaApp({
-        title: (title) => `${title} - Laravel`,
+        title: (title) => `${title}`,
         resolve: (name) => resolvePage(name),
         setup({ el, App, props }) {
             createRoot(el).render(
-                <LanguageProvider>
+                <LanguageProvider site={SITE}>
                     <DeviceSizeProvider>
                         <ShowPopUpProvider>
                             <App {...props} />

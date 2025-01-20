@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/common/ux/provider/Language";
+import {SUPPORT_LANGUAGE} from "@/common/constants";
 
 interface HeaderProps {
     navMenu: { link: string; title: string }[]; // Navigation Menu 타입
@@ -16,20 +17,18 @@ interface HeaderProps {
     };
 }
 
-const getFirstPath = (url: string): string => {
+const getFirstPath = (url: string, local:string): string => {
     const paths = url.split("/");
-    // if (paths[1] !== "") {
-    //     return `/${paths[1]}${paths[2] ? `/${paths[2]}` : ""}`;
-    // }
-    return `/${paths[1]}`;
+    const lang = local !== 'ko' ? local : null
+    return !lang ? `/${paths[1]}` : `/${lang}/${paths[2]}`;
 };
 
 const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems }) => {
     const [hoversed, setHoversed] = useState<string | null>(null);
     const { url } = usePage();
-    const firstPath = getFirstPath(url); // Use the helper function to determine the firstPath
-    const { t } = useTranslation();
     const { currentLocale, changeLanguage } = useLanguage();
+    const firstPath = getFirstPath(url, currentLocale.type);
+    const { t } = useTranslation();
 
     const { logoLink, options } = headerItems;
 
@@ -67,11 +66,12 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
                         {options.language && (
                             <LanguageDropdown>
                                 <button type="button" className="more">
-                                    {currentLocale === "ko" ? "한국어" : "English"} ▾
+                                    {currentLocale.title} ▾
                                 </button>
                                 <DropdownMenu>
-                                    <DropdownItem onClick={() => changeLanguage("ko")}>한국어</DropdownItem>
-                                    <DropdownItem onClick={() => changeLanguage("en")}>English</DropdownItem>
+                                    {SUPPORT_LANGUAGE.map(item => (
+                                        <DropdownItem key={item.type} onClick={() => changeLanguage(item)}>{item.title}</DropdownItem>
+                                    ))}
                                 </DropdownMenu>
                             </LanguageDropdown>
                         )}

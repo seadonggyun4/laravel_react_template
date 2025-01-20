@@ -6,21 +6,26 @@ import PopUpBg from "@/common/components/Organisms/shared/PopUpBg";
 import styled from 'styled-components';
 import { useShowPopUp } from "@/common/ux/provider/ShowPopUp";
 import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/sites/angelcar/constants";
-import {getNavMenu, getNaveContentMenu} from "@/sites/angelcar/constants/routes";
+import {getNavMenu, getNaveContentMenu, getEnNaveContentMenu, getEnNavMenu} from "@/sites/angelcar/constants/routes";
 import {useTranslation} from "react-i18next";
+import {useLanguage} from "@/common/ux/provider/Language";
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
     const { showCardDetail } = useShowPopUp();
     const { t } = useTranslation();
+    const { currentLocale } = useLanguage()
     const navMenu = getNavMenu(t)
     const navContentMenu = getNaveContentMenu(t)
+    const EnNavMenu = getEnNavMenu(t)
+    const EnNavContentMenu = getEnNaveContentMenu(t)
+
 
     const showPopUp = showCardDetail !== null;
 
     return (
         <PageWrapper>
             <Head title={title} />
-            <Header navMenu={navMenu} navContentMenu={navContentMenu} headerItems={HEADER_ITEMS}/>
+            <Header navMenu={currentLocale.type === 'ko' ?  navMenu : EnNavMenu} navContentMenu={currentLocale.type === 'ko' ? navContentMenu : EnNavContentMenu} headerItems={HEADER_ITEMS}/>
             <Main>
                 {children}
             </Main>

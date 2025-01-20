@@ -14,3 +14,14 @@ export const VEHICLE_TYPES = [
     { title: "수입", type: 7 },
     { title: "전기", type: 8 },
 ]
+
+export const SUPPORT_LANGUAGE = [
+    {
+        title: '한국어',
+        type: 'ko'
+    },
+    {
+        title: 'English',
+        type: 'en'
+    }
+]
