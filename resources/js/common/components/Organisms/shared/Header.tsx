@@ -20,7 +20,7 @@ interface HeaderProps {
 const getFirstPath = (url: string, local:string): string => {
     const paths = url.split("/");
     const lang = local !== 'ko' ? local : null
-    return !lang ? `/${paths[1]}` : `/${lang}/${paths[2]}`;
+    return !lang ? `/${paths[1]}` : (paths[2] ? `/${lang}/${paths[2]}`: `/${lang}`);
 };
 
 const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems }) => {
@@ -29,7 +29,6 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
     const { currentLocale, changeLanguage } = useLanguage();
     const firstPath = getFirstPath(url, currentLocale.type);
     const { t } = useTranslation();
-
     const { logoLink, options } = headerItems;
 
     // Active menu logic
