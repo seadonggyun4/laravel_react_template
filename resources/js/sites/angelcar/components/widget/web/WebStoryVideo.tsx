@@ -45,7 +45,9 @@ const WebStoryVideo = () => {
                             </a>
                         </LinkBox>
                     </TextContent>
-                    <YoutubeCard youTubeKey={key}/>
+                    <VideoContent>
+                        <YoutubeCard youTubeKey={key}/>
+                    </VideoContent>
                 </StoryBox>
                 <StorySelectBox stories={stories} setkey={setKey}/>
             </WebStoryVideoWrapper>
@@ -78,10 +80,12 @@ const StoryBox = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
+    width: 675px;
 `
 
 const TextContent = styled.div`
+    width: 100%;
+
     & > h3{
         margin-bottom: 10px;
         font-size: var(--strong-font);
@@ -102,6 +106,12 @@ const TextContent = styled.div`
         }
     }
 `
+
+const VideoContent = styled.div`
+    width: 100%;
+    height: 380px;
+`
+
 
 const LinkBox = styled.div`
     a {

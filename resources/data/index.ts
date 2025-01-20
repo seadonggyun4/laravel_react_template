@@ -331,7 +331,6 @@ export const salesPromotions: Promotion[] = [
     },
 ]
 
-
 export const stories = [
     { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/010.png", link:'https://www.youtube.com/watch?v=YrEhZ0vACPg' },
     { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%E1%84%92%E1%85%A9%E1%86%B7%E1%84%91%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%B5-%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg", link:'https://www.youtube.com/watch?v=OclvaI3n0UI' },
@@ -341,4 +340,25 @@ export const stories = [
     { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/230210_%EC%99%B8%EA%B5%AD%EC%9D%B8%EB%8C%80%EC%97%AC%EC%98%81%EC%83%81_%EC%A0%95%EB%B0%A9%ED%96%A5%EC%8D%B8%EB%84%A4%EC%9D%BC(%EA%B5%AD%EB%AC%B8).png", link:'https://www.youtube.com/watch?v=XFc-bM9KB5M' },
     { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_%ED%95%9C%EB%9D%BC%EC%82%B0.jpg", link:'https://www.youtube.com/watch?v=Kkju5uKctwQ' },
     { image: "https://jejuangeltour.com/theme/basic/img/renewalPc/main/%EC%97%B4%EB%91%90%EB%8B%AC%20%ED%8A%B8%EB%A0%88%ED%82%B9%20%ED%95%98%EC%9D%B4%EB%9D%BC%EC%9D%B4%ED%8A%B8.jpg", link:'https://www.youtube.com/watch?v=h5uXvd7KjGA' },
+];
+
+export const events = [
+    { id: 1, img: "assets/img/panorama/panorama1.png" },
+    { id: 2, img: "assets/img/panorama/panorama2.png" },
+    { id: 3, img: "assets/img/panorama/panorama3.png" },
+    { id: 4, img: "assets/img/panorama/panorama4.png" },
+    { id: 5, img: "assets/img/panorama/panorama5.png" },
+    { id: 6, img: "assets/img/panorama/panorama6.png" },
+    { id: 7, img: "assets/img/panorama/panorama7.png" },
+    { id: 8, img: "assets/img/panorama/panorama8.png" },
+];
+
+export const swiperList = [
+    { img: 'assets/img/swiper/swiper1.jpg', text: "새해 특가 50% 😎", slide: 1 },
+    { img: 'assets/img/swiper/swiper2.jpg', text: "2만원 할인", slide: 2 },
+    { img: 'assets/img/swiper/swiper3.jpg', text: "펫 프렌들리 🐶", slide: 3 },
+    { img: 'assets/img/swiper/swiper4.jpg', text: "완전면책 0원 🌱", slide: 4 },
+    { img: 'assets/img/swiper/swiper5.jpg', text: "주차 대행 서비스", slide: 5 },
+    { img: 'assets/img/swiper/swiper6.jpg', text: "소비자중심 인증기업 👑", slide: 6 },
+    { img: 'assets/img/swiper/swiper7.jpg', text: "엔젤KEY 할인", slide: 7 },
 ];

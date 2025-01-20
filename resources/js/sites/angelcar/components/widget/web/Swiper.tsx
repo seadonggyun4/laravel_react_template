@@ -5,22 +5,24 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styled from "styled-components";
-import { MOBILE_WIDTH } from "@/common/constants"; // Import the constant
+import { MOBILE_WIDTH } from "@/common/constants";
 
-const SwiperComponent: React.FC = () => {
+// Define the type for an individual swiper item
+interface SwiperItem {
+    img: string;
+    text: string;
+    slide: number;
+}
+
+// Define the props for SwiperComponent
+interface SwiperComponentProps {
+    swiperList: SwiperItem[];
+}
+
+const SwiperComponent: React.FC<SwiperComponentProps> = ({ swiperList }) => {
     const [isPaused, setIsPaused] = useState(false); // Pause state
     const [currentSlide, setCurrentSlide] = useState(1); // Current slide state
     const swiperRef = useRef<SwiperClass | null>(null); // Swiper instance ref
-
-    const swiperList = [
-        { img: 'assets/img/swiper/swiper1.jpg', text: "새해 특가 50% 😎", slide: 1 },
-        { img: 'assets/img/swiper/swiper2.jpg', text: "2만원 할인", slide: 2 },
-        { img: 'assets/img/swiper/swiper3.jpg', text: "펫 프렌들리 🐶", slide: 3 },
-        { img: 'assets/img/swiper/swiper4.jpg', text: "완전면책 0원 🌱", slide: 4 },
-        { img: 'assets/img/swiper/swiper5.jpg', text: "주차 대행 서비스", slide: 5 },
-        { img: 'assets/img/swiper/swiper6.jpg', text: "소비자중심 인증기업 👑", slide: 6 },
-        { img: 'assets/img/swiper/swiper7.jpg', text: "엔젤KEY 할인", slide: 7 },
-    ];
 
     const togglePause = () => {
         if (swiperRef.current) {
@@ -55,10 +57,10 @@ const SwiperComponent: React.FC = () => {
                     delay: 5000, // Autoplay interval
                     disableOnInteraction: false, // Keep autoplay after interaction
                 }}
-                onSwiper={(swiper:SwiperClass) => {
+                onSwiper={(swiper: SwiperClass) => {
                     swiperRef.current = swiper; // Store swiper instance
                 }}
-                onSlideChange={(swiper:SwiperClass) => {
+                onSlideChange={(swiper: SwiperClass) => {
                     setCurrentSlide(swiper.realIndex + 1); // Update current slide index
                 }}
             >

@@ -4,7 +4,7 @@ import WebProductCard from "@/common/components/Molecule/web/WebProductCard";
 import Products from "@/common/components/Organisms/shared/Products";
 import styled from "styled-components";
 import WebSearchSection from "@/common/components/Organisms/web/WebSearch";
-import WebRecommended from "@/sites/angelcar/components/widget/web/WebRecommended";
+import WebRecommended from "@/common/components/Organisms/web/WebRecommended";
 import MobileProductCard from "@/common/components/Molecule/mobile/MobileProductCard";
 import React from "react";
 import {useDeviceSize} from "@/common/ux/provider/DeviceSize";

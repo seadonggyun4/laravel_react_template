@@ -9,13 +9,14 @@ import WebSearSection from "@/common/components/Organisms/web/WebSearch";
 import MobileProductCard from "@/common/components/Molecule/mobile/MobileProductCard";
 import { useDeviceSize } from "@/common/ux/provider/DeviceSize";
 import WebStoryVideo from "@/sites/angelcar/components/widget/web/WebStoryVideo";
+import { events, swiperList } from "../../../../data";
 
 export default function HomePage() {
     const { isMobile } = useDeviceSize();
 
     return (
         <PageLayout title="제주도렌트카 | 제주엔젤카">
-            <Swiper/>
+            <Swiper swiperList={swiperList}/>
             <WebSearSection/>
             <Products text={{
                 title: '베스트 추천상품',
@@ -42,7 +43,7 @@ export default function HomePage() {
                     )
                 ))}
             </Products>
-            <Panorama/>
+            <Panorama events={events} />
         </PageLayout>
     );
 }

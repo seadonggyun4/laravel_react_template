@@ -2,11 +2,11 @@ import React from 'react';
 import { Head } from '@inertiajs/react';
 import Header from '@/common/components/Organisms/shared/Header';
 import Footer from '@/common/components/Organisms/shared/Footer';
-import PopUpBg from "@/common/components/Organisms/PopUpBg";
+import PopUpBg from "@/common/components/Organisms/shared/PopUpBg";
 import styled from 'styled-components';
 import { useShowPopUp } from "@/common/ux/provider/ShowPopUp";
-import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/common/constants";
-import {getNavMenu, getNaveContentMenu} from "@/common/constants/routes";
+import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/sites/angelcar/constants";
+import {getNavMenu, getNaveContentMenu} from "@/sites/angelcar/constants/routes";
 import {useTranslation} from "react-i18next";
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {

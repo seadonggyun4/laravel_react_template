@@ -18,8 +18,8 @@ export default YoutubeCard;
 
 const VideoCard = styled.div`
     position: relative;
-    width: 675px;
-    height: 380px;
+    width: 100%;
+    height: 100%;
     background: var(--bg-secondary-color);
     overflow: hidden;
     border-radius: var(--card-border-radius);

@@ -2,19 +2,19 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { MOBILE_WIDTH } from "@/common/constants"; // Import the constant
 
-const Panorama: React.FC = () => {
-    const bgVideo = "assets/video/bgVideo.mp4";
+// Define the type for an event
+interface Event {
+    id: number;
+    img: string;
+}
 
-    const images = [
-        "assets/img/panorama/panorama1.png",
-        "assets/img/panorama/panorama2.png",
-        "assets/img/panorama/panorama3.png",
-        "assets/img/panorama/panorama4.png",
-        "assets/img/panorama/panorama5.png",
-        "assets/img/panorama/panorama6.png",
-        "assets/img/panorama/panorama7.png",
-        "assets/img/panorama/panorama8.png",
-    ]; // public 폴더에서 이미지를 불러옴
+// Define the props for the Panorama component
+interface PanoramaProps {
+    events: Event[];
+}
+
+const Panorama: React.FC<PanoramaProps> = ({ events }) => {
+    const bgVideo = "assets/video/bgVideo.mp4";
 
     return (
         <PanoramaSection>
@@ -25,11 +25,11 @@ const Panorama: React.FC = () => {
                     <p>지금 호로록 들어오멍 특별한 혜택 챙겨갑써예! 😃</p>
                 </TextContent>
                 <Circle>
-                    {images.map((image, index) => (
+                    {events.map((event, index) => (
                         <Article key={index} className={`face${index + 1}`}>
                             <Inner>
                                 <ImageContainer>
-                                    <img src={image} alt={`Panorama ${index + 1}`} />
+                                    <img src={event.img} alt={`Panorama ${index + 1}`} />
                                 </ImageContainer>
                             </Inner>
                         </Article>
@@ -70,8 +70,6 @@ const PanoramaWrapper = styled.div`
     cursor: pointer;
     transition: .3s ease-in-out;
 `;
-
-
 
 const Video = styled.video`
     position: absolute;
