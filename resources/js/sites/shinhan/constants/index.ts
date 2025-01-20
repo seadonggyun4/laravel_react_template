@@ -21,25 +21,12 @@ export const FOOTER_ARTICLES = [
             "고객센터 08:00~19:00 (연중무휴)",
         ],
     },
-    {
-        title: "Jeju Angel Tour",
-        content: [
-            "주식회사 제주엔젤투어",
-            "대표자: 강영민",
-            "통신판매업신고: 제2018-제주용담2-0007호",
-            "사업자등록번호: 393-81-00371",
-            "관광사업등록: 일반여행업 제2016-26호(제주)",
-            "주소: 제주 제주시 도령로 171-1",
-            "전화: 064-738-1004",
-        ],
-    },
 ];
 
 export const HEADER_ITEMS = {
-    // logoLink: 'assets/img/logo.png',
+    logoLink: '/assets/shinhan/img/logo.png',
     options: {
-        login: true,
-        language: true,
+        login: false,
+        language: false,
     }
 }
-

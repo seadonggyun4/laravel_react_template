@@ -6,7 +6,7 @@ import { useLanguage } from "@/common/ux/provider/Language";
 
 interface HeaderProps {
     navMenu: { link: string; title: string }[]; // Navigation Menu 타입
-    navContentMenu: Record<string, { link: string; title: string }[]>; // Navigation Content 타입
+    navContentMenu?: Record<string, { link: string; title: string }[]>; // Navigation Content 타입 (옵션)
     headerItems: {
         logoLink?: string;
         options: {
@@ -16,21 +16,31 @@ interface HeaderProps {
     };
 }
 
+const getFirstPath = (url: string): string => {
+    const paths = url.split("/");
+    // if (paths[1] !== "") {
+    //     return `/${paths[1]}${paths[2] ? `/${paths[2]}` : ""}`;
+    // }
+    return `/${paths[1]}`;
+};
+
 const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems }) => {
     const [hoversed, setHoversed] = useState<string | null>(null);
     const { url } = usePage();
-    const firstPath = `/${url.split("/")[1]}`;
+    const firstPath = getFirstPath(url); // Use the helper function to determine the firstPath
     const { t } = useTranslation();
     const { currentLocale, changeLanguage } = useLanguage();
 
     const { logoLink, options } = headerItems;
 
-    // 활성 메뉴 찾기
-    const activeMenu: string | undefined = Object.keys(navContentMenu).find((parentKey) =>
-        navContentMenu[parentKey]?.some((subItem) => subItem.link === url)
-    );
+    // Active menu logic
+    const activeMenu: string | undefined = navContentMenu
+        ? Object.keys(navContentMenu).find((parentKey) =>
+            navContentMenu[parentKey]?.some((subItem) => subItem.link === url)
+        )
+        : undefined;
 
-    // 초기 설정
+    // Initial setup
     useEffect(() => {
         setHoversed(firstPath);
     }, [firstPath]);
@@ -40,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
             <HeaderBox>
                 <div>
                     <Logo>
-                        <Link href="/public">
+                        <Link href={navMenu[0].link}>
                             {logoLink ? (
                                 <img src={logoLink} alt="logo" />
                             ) : (
@@ -83,7 +93,8 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
                         ))}
                     </div>
                 </Nav>
-                {(hoversed && navContentMenu[hoversed]) || (activeMenu && hoversed && navContentMenu[hoversed]) ? (
+                {navContentMenu &&
+                ((hoversed && navContentMenu[hoversed]) || (activeMenu && hoversed && navContentMenu[hoversed])) ? (
                     <NavContent>
                         <ul>
                             {navContentMenu[hoversed || activeMenu!]?.map((item) => (
@@ -103,6 +114,7 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
         </HeaderContainer>
     );
 };
+
 
 // Styled components
 const HeaderContainer = styled.header`
@@ -182,9 +194,8 @@ const Nav = styled.nav`
 const StyledLink = styled(Link)`
     font-size: 1rem;
     text-decoration: none;
-    padding: 0.3125rem;
+    padding: 0.3125rem 2rem;
     border-radius: var(--button-border-radius);
-    width: 5rem;
     text-align: center;
     transition: all 0.3s ease-in-out;
 

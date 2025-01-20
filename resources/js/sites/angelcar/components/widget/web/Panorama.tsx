@@ -14,7 +14,7 @@ interface PanoramaProps {
 }
 
 const Panorama: React.FC<PanoramaProps> = ({ events }) => {
-    const bgVideo = "assets/video/bgVideo.mp4";
+    const bgVideo = "assets/angelcar/video/bgVideo.mp4";
 
     return (
         <PanoramaSection>

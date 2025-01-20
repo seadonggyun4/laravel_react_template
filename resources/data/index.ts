@@ -31,7 +31,7 @@ export const bestPromotions: Promotion[] = [
         ],
         price: 28000,
         reservation: 1000,
-        img: '/assets/img/promotion/best1.png'
+        img: '/assets/common/img/promotion/best1.png'
     },
     {
         title:'더뉴 K3(고급형)',
@@ -49,7 +49,7 @@ export const bestPromotions: Promotion[] = [
         ],
         price: 33800,
         reservation: 1000,
-        img: '/assets/img/promotion/best2.png'
+        img: '/assets/common/img/promotion/best2.png'
     },
     {
         title:'더뉴 K5 서라운드뷰(고급형)',
@@ -67,7 +67,7 @@ export const bestPromotions: Promotion[] = [
         ],
         price: 40600,
         reservation: 1000,
-        img: '/assets/img/promotion/best3.png'
+        img: '/assets/common/img/promotion/best3.png'
     },
     {
         title:'더올뉴 G8 AWD 서라운드뷰(고급형)',
@@ -85,7 +85,7 @@ export const bestPromotions: Promotion[] = [
         ],
         price: 63000,
         reservation: 5000,
-        img: '/assets/img/promotion/best4.png'
+        img: '/assets/common/img/promotion/best4.png'
     },
     {
         title:'디올뉴 코나',
@@ -103,7 +103,7 @@ export const bestPromotions: Promotion[] = [
         ],
         price: 33800,
         reservation: 1000,
-        img: '/assets/img/promotion/best5.png'
+        img: '/assets/common/img/promotion/best5.png'
     },
     {
         title:'4세 더뉴 카니발',
@@ -121,7 +121,7 @@ export const bestPromotions: Promotion[] = [
         ],
         price: 75600,
         reservation: 5000,
-        img: '/assets/img/promotion/best6.png'
+        img: '/assets/common/img/promotion/best6.png'
     },
 ]
 
@@ -138,7 +138,7 @@ export const premiumPromotions: Promotion[] = [
         ],
         price: 30000,
         reservation: 1000,
-        img: '/assets/img/promotion/premium1.png'
+        img: '/assets/common/img/promotion/premium1.png'
     },
     {
         title:'머스탱 컨버터블',
@@ -152,7 +152,7 @@ export const premiumPromotions: Promotion[] = [
         ],
         price: 46800,
         reservation: 1000,
-        img: '/assets/img/promotion/premium2.png'
+        img: '/assets/common/img/promotion/premium2.png'
     },
     {
         title:'벤츠 CLE 200 카브리올레',
@@ -170,7 +170,7 @@ export const premiumPromotions: Promotion[] = [
         ],
         price: 70000,
         reservation: 5000,
-        img: '/assets/img/promotion/premium3.png'
+        img: '/assets/common/img/promotion/premium3.png'
     },
     {
         title:'테슬라 모델Y RWD',
@@ -184,7 +184,7 @@ export const premiumPromotions: Promotion[] = [
         ],
         price: 54000,
         reservation: 5000,
-        img: '/assets/img/promotion/premium4.png'
+        img: '/assets/common/img/promotion/premium4.png'
     },
     {
         title:'EV3 롱레인지',
@@ -202,7 +202,7 @@ export const premiumPromotions: Promotion[] = [
         ],
         price: 37800,
         reservation: 1000,
-        img: '/assets/img/promotion/premium5.png'
+        img: '/assets/common/img/promotion/premium5.png'
     },
     {
         title:'더올뉴 코나 EV',
@@ -220,7 +220,7 @@ export const premiumPromotions: Promotion[] = [
         ],
         price: 35000,
         reservation: 1000,
-        img: '/assets/img/promotion/premium6.png'
+        img: '/assets/common/img/promotion/premium6.png'
     },
 ]
 
@@ -241,7 +241,7 @@ export const salesPromotions: Promotion[] = [
         ],
         price: 33000,
         sale:10,
-        img: '/assets/img/promotion/sale1.png'
+        img: '/assets/common/img/promotion/sale1.png'
     },
     {
         title:'더뉴 그랜저 서라운드뷰(고급형)',
@@ -259,7 +259,7 @@ export const salesPromotions: Promotion[] = [
         ],
         price: 106300,
         sale:20,
-        img: '/assets/img/promotion/sale2.png'
+        img: '/assets/common/img/promotion/sale2.png'
     },
     {
         title:'베뉴',
@@ -277,7 +277,7 @@ export const salesPromotions: Promotion[] = [
         ],
         price: 46100,
         sale:20,
-        img: '/assets/img/promotion/sale3.png'
+        img: '/assets/common/img/promotion/sale3.png'
     },
     {
         title:'더뉴 QM6 5인승',
@@ -291,7 +291,7 @@ export const salesPromotions: Promotion[] = [
         ],
         price: 57700,
         sale:10,
-        img: '/assets/img/promotion/sale4.png'
+        img: '/assets/common/img/promotion/sale4.png'
     },
     {
         title:'4세대 쏘렌토 하이브리드 5인 2WD',
@@ -309,7 +309,7 @@ export const salesPromotions: Promotion[] = [
         ],
         price: 69100,
         sale:10,
-        img: '/assets/img/promotion/sale5.png'
+        img: '/assets/common/img/promotion/sale5.png'
     },
     {
         title:'쏘울 부스터 EV',
@@ -327,7 +327,7 @@ export const salesPromotions: Promotion[] = [
         ],
         price: 64600,
         sale:10,
-        img: '/assets/img/promotion/sale6.png'
+        img: '/assets/common/img/promotion/sale6.png'
     },
 ]
 
@@ -343,22 +343,22 @@ export const stories = [
 ];
 
 export const events = [
-    { id: 1, img: "assets/img/panorama/panorama1.png" },
-    { id: 2, img: "assets/img/panorama/panorama2.png" },
-    { id: 3, img: "assets/img/panorama/panorama3.png" },
-    { id: 4, img: "assets/img/panorama/panorama4.png" },
-    { id: 5, img: "assets/img/panorama/panorama5.png" },
-    { id: 6, img: "assets/img/panorama/panorama6.png" },
-    { id: 7, img: "assets/img/panorama/panorama7.png" },
-    { id: 8, img: "assets/img/panorama/panorama8.png" },
+    { id: 1, img: "assets/angelcar/img/panorama/panorama1.png" },
+    { id: 2, img: "assets/angelcar/img/panorama/panorama2.png" },
+    { id: 3, img: "assets/angelcar/img/panorama/panorama3.png" },
+    { id: 4, img: "assets/angelcar/img/panorama/panorama4.png" },
+    { id: 5, img: "assets/angelcar/img/panorama/panorama5.png" },
+    { id: 6, img: "assets/angelcar/img/panorama/panorama6.png" },
+    { id: 7, img: "assets/angelcar/img/panorama/panorama7.png" },
+    { id: 8, img: "assets/angelcar/img/panorama/panorama8.png" },
 ];
 
 export const swiperList = [
-    { img: 'assets/img/swiper/swiper1.jpg', text: "새해 특가 50% 😎", slide: 1 },
-    { img: 'assets/img/swiper/swiper2.jpg', text: "2만원 할인", slide: 2 },
-    { img: 'assets/img/swiper/swiper3.jpg', text: "펫 프렌들리 🐶", slide: 3 },
-    { img: 'assets/img/swiper/swiper4.jpg', text: "완전면책 0원 🌱", slide: 4 },
-    { img: 'assets/img/swiper/swiper5.jpg', text: "주차 대행 서비스", slide: 5 },
-    { img: 'assets/img/swiper/swiper6.jpg', text: "소비자중심 인증기업 👑", slide: 6 },
-    { img: 'assets/img/swiper/swiper7.jpg', text: "엔젤KEY 할인", slide: 7 },
+    { img: 'assets/angelcar/img/swiper/swiper1.jpg', text: "새해 특가 50% 😎", slide: 1 },
+    { img: 'assets/angelcar/img/swiper/swiper2.jpg', text: "2만원 할인", slide: 2 },
+    { img: 'assets/angelcar/img/swiper/swiper3.jpg', text: "펫 프렌들리 🐶", slide: 3 },
+    { img: 'assets/angelcar/img/swiper/swiper4.jpg', text: "완전면책 0원 🌱", slide: 4 },
+    { img: 'assets/angelcar/img/swiper/swiper5.jpg', text: "주차 대행 서비스", slide: 5 },
+    { img: 'assets/angelcar/img/swiper/swiper6.jpg', text: "소비자중심 인증기업 👑", slide: 6 },
+    { img: 'assets/angelcar/img/swiper/swiper7.jpg', text: "엔젤KEY 할인", slide: 7 },
 ];

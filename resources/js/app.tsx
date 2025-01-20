@@ -24,7 +24,6 @@ const resolvePage = async (name: string) => {
     const language = fullLanguage.split('-')[0];
     const sessionLocale = sessionStorage.getItem('app_locale') || language;
     await initI18n(sessionLocale, site);
-    console.log(name)
 
     // 동적 경로 생성
     const targetPath = `./sites/${site}/pages/${pageName}.tsx`;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import React from "react";
-import PageLayout from "@/sites/angelcar/layouts/PageLayout";
+import PageLayout from "@/sites/shinhan/layouts/PageLayout";
 import { Link } from "@inertiajs/react";
 
 const NotFoundPage = () => {
-    const NotFoundImg = '/assets/common/img/notFoundImg.png';
+    const NotFoundImg = '/assets/shinhan/img/notFoundImg.png';
 
 
     return (
@@ -52,9 +52,9 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-    width: 266px;
+    width: 150px;
     height: auto;
-    margin-bottom: 17px;
+    margin-bottom: 50px;
 `;
 
 const Strong = styled.strong`
