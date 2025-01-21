@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "typeRoots": ["./node_modules/@types",
-            "./resources/js/common/types"
+            "./resources/js/shared/types"
         ],
         "target": "ESNext",
         "module": "ESNext",

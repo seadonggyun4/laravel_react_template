@@ -1,12 +1,12 @@
 import React from 'react';
 import { Head } from '@inertiajs/react';
-import Header from '@/common/components/Organisms/shared/Header';
-import Footer from '@/common/components/Organisms/shared/Footer';
-import PopUpBg from "@/common/components/Organisms/shared/PopUpBg";
+import Header from '@/widgets/common/Header';
+import Footer from '@/widgets/common/Footer';
+import PopUpBg from "@/widgets/common/PopUpBg";
 import styled from 'styled-components';
-import { useShowPopUp } from "@/common/ux/provider/ShowPopUp";
-import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/sites/shinhan/constants";
-import {getNavMenu} from "@/sites/shinhan/constants/routes";
+import { useShowPopUp } from "@/app/popup/provider/ShowPopUp";
+import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/sites/shinhan/config";
+import {getNavMenu} from "@/sites/shinhan/config/routes";
 import {useTranslation} from "react-i18next";
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {

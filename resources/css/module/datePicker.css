@@ -1,0 +1,21 @@
+.react-datepicker__day {
+    transition: .3s ease-in-out;
+}
+
+.react-datepicker__day:hover {
+    background-color: var(--primary-color);
+}
+
+.react-datepicker__day--today{
+    color: var(--primary-color);
+}
+
+.react-datepicker__day--selected{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.react-datepicker__day--range-end {
+    background-color: var(--primary-color);
+    color: white;
+}

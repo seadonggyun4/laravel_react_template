@@ -2,16 +2,13 @@ import '../css/reset.css';
 import '../css/constants.css';
 import '../css/global.css';
 import '@/bootstrap';
-import initI18n from '@/common/utils/i18n';
-
+import initI18n from '@/app/language/func/i18n';
 import { createInertiaApp } from '@inertiajs/react';
 import { createRoot } from 'react-dom/client';
-
-// 프로바이더 import
-import { LanguageProvider } from '@/common/ux/provider/Language';
-import { DeviceSizeProvider } from '@/common/ux/provider/DeviceSize';
-import { ShowPopUpProvider } from '@/common/ux/provider/ShowPopUp';
-import {SUPPORT_LANGUAGE} from "@/common/constants";
+import { LanguageProvider } from '@/app/language/provider/Language';
+import { DeviceSizeProvider } from '@/app/device/provider/DeviceSize';
+import { ShowPopUpProvider } from '@/app/popup/provider/ShowPopUp';
+import {SUPPORT_LANGUAGE} from "@/shared/config";
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.
 const pages = import.meta.glob('./sites/**/pages/**/*.tsx');
@@ -54,7 +51,7 @@ const resolvePage = async (name: string) => {
             );
         },
         progress: {
-            color: '#4B5563',
+            color: '#00A1E5',
         },
     });
 })();

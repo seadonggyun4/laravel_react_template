@@ -1,12 +1,12 @@
 import React from "react";
 import PageLayout from "@/sites/shinhan/layouts/PageLayout";
-import WebProductCard from "@/common/components/Molecule/web/WebProductCard";
+import WebProductCard from "@/shared/ui/Molecule/web/WebProductCard";
 import { bestPromotions } from "../../../../data";
-import Products from "@/common/components/Organisms/shared/Products";
-import WebSearSection from "@/common/components/Organisms/web/WebSearch";
-import MobileProductCard from "@/common/components/Molecule/mobile/MobileProductCard";
-import { useDeviceSize } from "@/common/ux/provider/DeviceSize";
-import WebRecommended from "@/common/components/Organisms/web/WebRecommended";
+import Products from "@/widgets/common/Products";
+import WebSearSection from "@/widgets/web/WebSearch";
+import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
+import { useDeviceSize } from "@/app/device/provider/DeviceSize";
+import WebRecommended from "@/widgets/web/WebRecommended";
 
 export default function HomePage() {
     const { isMobile } = useDeviceSize();
