@@ -2,10 +2,10 @@ import React from "react";
 import PageLayout from "@/sites/shinhan/layouts/PageLayout";
 import WebProductCard from "@/shared/ui/Molecule/web/WebProductCard";
 import { bestPromotions } from "../../../../data";
-import Products from "@/widgets/common/Products";
+import Products from "@/widgets/reaction/Products";
 import WebSearSection from "@/widgets/web/WebSearch";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
-import { useDeviceSize } from "@/app/device/provider/DeviceSize";
+import { useDeviceSize } from "@/app/provider/DeviceSize";
 import WebRecommended from "@/widgets/web/WebRecommended";
 
 export default function HomePage() {

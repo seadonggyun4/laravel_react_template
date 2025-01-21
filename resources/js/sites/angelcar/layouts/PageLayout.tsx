@@ -1,14 +1,14 @@
 import React from 'react';
 import { Head } from '@inertiajs/react';
-import Header from '@/widgets/common/Header';
-import Footer from '@/widgets/common/Footer';
-import PopUpBg from "@/widgets/common/PopUpBg";
+import Header from '@/widgets/reaction/Header';
+import Footer from '@/widgets/reaction/Footer';
+import PopUpBg from "@/widgets/reaction/PopUpBg";
 import styled from 'styled-components';
-import { useShowPopUp } from "@/app/popup/provider/ShowPopUp";
+import { useShowPopUp } from "@/app/provider/ShowPopUp";
 import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/sites/angelcar/config";
 import {getNavMenu, getNaveContentMenu, getEnNaveContentMenu, getEnNavMenu} from "@/sites/angelcar/config/routes";
 import {useTranslation} from "react-i18next";
-import {useLanguage} from "@/app/language/provider/Language";
+import {useLanguage} from "@/app/provider/Language";
 
 const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => {
     const { showCardDetail } = useShowPopUp();

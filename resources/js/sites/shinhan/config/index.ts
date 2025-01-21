@@ -1,4 +1,4 @@
-// common ui option
+// reaction ui option
 export const FOOTER_ARTICLES = [
     {
         title: "About Us",

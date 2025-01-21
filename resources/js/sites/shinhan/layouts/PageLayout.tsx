@@ -1,10 +1,10 @@
 import React from 'react';
 import { Head } from '@inertiajs/react';
-import Header from '@/widgets/common/Header';
-import Footer from '@/widgets/common/Footer';
-import PopUpBg from "@/widgets/common/PopUpBg";
+import Header from '@/widgets/reaction/Header';
+import Footer from '@/widgets/reaction/Footer';
+import PopUpBg from "@/widgets/reaction/PopUpBg";
 import styled from 'styled-components';
-import { useShowPopUp } from "@/app/popup/provider/ShowPopUp";
+import { useShowPopUp } from "@/app/provider/ShowPopUp";
 import { FOOTER_ARTICLES, HEADER_ITEMS } from "@/sites/shinhan/config";
 import {getNavMenu} from "@/sites/shinhan/config/routes";
 import {useTranslation} from "react-i18next";

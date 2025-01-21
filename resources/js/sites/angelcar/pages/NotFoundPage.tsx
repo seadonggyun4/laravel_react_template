@@ -4,7 +4,7 @@ import PageLayout from "@/sites/angelcar/layouts/PageLayout";
 import { Link } from "@inertiajs/react";
 
 const NotFoundPage = () => {
-    const NotFoundImg = '/assets/common/img/notFoundImg.png';
+    const NotFoundImg = '/assets/angelcar/img/notFoundImg.png';
 
 
     return (

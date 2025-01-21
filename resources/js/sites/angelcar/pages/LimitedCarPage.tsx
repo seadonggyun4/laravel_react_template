@@ -1,10 +1,10 @@
 import PageLayout from "@/sites/angelcar/layouts/PageLayout";
-import Products from "@/widgets/common/Products";
+import Products from "@/widgets/reaction/Products";
 import WebProductCard from "@/shared/ui/Molecule/web/WebProductCard";
 import {salesPromotions} from "../../../../data";
 import styled from "styled-components";
 import WebSearchSection from "@/widgets/web/WebSearch";
-import { useDeviceSize } from "@/app/device/provider/DeviceSize";
+import { useDeviceSize } from "@/app/provider/DeviceSize";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
 import React from "react";
 

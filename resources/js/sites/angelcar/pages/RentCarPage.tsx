@@ -1,13 +1,13 @@
 import PageLayout from "@/sites/angelcar/layouts/PageLayout";
 import {bestPromotions, premiumPromotions} from "../../../../data";
 import WebProductCard from "@/shared/ui/Molecule/web/WebProductCard";
-import Products from "@/widgets/common/Products";
+import Products from "@/widgets/reaction/Products";
 import styled from "styled-components";
 import WebSearchSection from "@/widgets/web/WebSearch";
 import WebRecommended from "@/widgets/web/WebRecommended";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
 import React from "react";
-import {useDeviceSize} from "@/app/device/provider/DeviceSize";
+import {useDeviceSize} from "@/app/provider/DeviceSize";
 
 const RentCarPage = () => {
     const rentCars = bestPromotions.concat(premiumPromotions);

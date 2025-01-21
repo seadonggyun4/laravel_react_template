@@ -2,12 +2,12 @@ import '../css/reset.css';
 import '../css/constants.css';
 import '../css/global.css';
 import '@/bootstrap';
-import initI18n from '@/app/language/func/i18n';
+import initI18n from '@/app/utils/i18n';
 import { createInertiaApp } from '@inertiajs/react';
 import { createRoot } from 'react-dom/client';
-import { LanguageProvider } from '@/app/language/provider/Language';
-import { DeviceSizeProvider } from '@/app/device/provider/DeviceSize';
-import { ShowPopUpProvider } from '@/app/popup/provider/ShowPopUp';
+import { LanguageProvider } from '@/app/provider/Language';
+import { DeviceSizeProvider } from '@/app/provider/DeviceSize';
+import { ShowPopUpProvider } from '@/app/provider/ShowPopUp';
 import {SUPPORT_LANGUAGE} from "@/shared/config";
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.

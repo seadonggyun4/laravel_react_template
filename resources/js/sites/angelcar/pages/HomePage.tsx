@@ -4,10 +4,10 @@ import Swiper from "@/sites/angelcar/ui/Organisms/web/Swiper";
 import PageLayout from "@/sites/angelcar/layouts/PageLayout";
 import WebProductCard from "@/shared/ui/Molecule/web/WebProductCard";
 import { bestPromotions } from "../../../../data";
-import Products from "@/widgets/common/Products";
+import Products from "@/widgets/reaction/Products";
 import WebSearSection from "@/widgets/web/WebSearch";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
-import { useDeviceSize } from "@/app/device/provider/DeviceSize";
+import { useDeviceSize } from "@/app/provider/DeviceSize";
 import WebStoryVideo from "@/sites/angelcar/ui/Organisms/web/WebStoryVideo";
 import { events, swiperList } from "../../../../data";
 
