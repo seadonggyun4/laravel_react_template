@@ -9,6 +9,7 @@ import { LanguageProvider } from '@/app/provider/Language';
 import { DeviceSizeProvider } from '@/app/provider/DeviceSize';
 import { ShowPopUpProvider } from '@/app/provider/ShowPopUp';
 import {SUPPORT_LANGUAGE} from "@/shared/config";
+import TanStackQueryProvider from "@/app/store/TanStackQuery";
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.
 const pages = import.meta.glob('./sites/**/pages/**/*.tsx');
@@ -41,13 +42,15 @@ const resolvePage = async (name: string) => {
         resolve: (name) => resolvePage(name),
         setup({ el, App, props }) {
             createRoot(el).render(
-                <LanguageProvider site={SITE}>
-                    <DeviceSizeProvider>
-                        <ShowPopUpProvider>
-                            <App {...props} />
-                        </ShowPopUpProvider>
-                    </DeviceSizeProvider>
-                </LanguageProvider>
+                <TanStackQueryProvider>
+                    <LanguageProvider site={SITE}>
+                        <DeviceSizeProvider>
+                            <ShowPopUpProvider>
+                                <App {...props} />
+                            </ShowPopUpProvider>
+                        </DeviceSizeProvider>
+                    </LanguageProvider>
+                </TanStackQueryProvider>
             );
         },
         progress: {
