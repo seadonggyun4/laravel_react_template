@@ -1,11 +1,11 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import axios from 'axios';
+import {apiClient} from "@/shared/api";
 
 // JSON 파일 로드 함수
 const loadsiteTranslations = async (locale: string, site: string) => {
     try {
-        const response = await axios.get(`/lang/${locale}/${site}.json`);
+        const response = await apiClient(`/lang/${locale}/${site}.json`);
         return response.data;
     } catch (error) {
         console.error(`Error loading ${site}.json for locale "${locale}":`, error);
@@ -17,16 +17,19 @@ const loadsiteTranslations = async (locale: string, site: string) => {
 const initI18n = async (locale: string, site: string) => {
     const translations = await loadsiteTranslations(locale, site);
 
+    console.log(translations);
+
     await i18n.use(initReactI18next).init({
         resources: {
-            [locale]: { translation: translations },
+            [locale]: { translation: translations as Record<string, string> },
         },
-        lng: locale, // 현재 언어 설정
-        fallbackLng: 'ko', // 기본 언어 설정
+        lng: locale,
+        fallbackLng: 'ko',
         interpolation: {
-            escapeValue: false, // HTML 이스케이프 비활성화
+            escapeValue: false,
         },
     });
+
 };
 
 export default initI18n;
