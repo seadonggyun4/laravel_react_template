@@ -10,6 +10,7 @@ import { DeviceSizeProvider } from '@/app/provider/DeviceSize';
 import { ShowPopUpProvider } from '@/app/provider/ShowPopUp';
 import {SUPPORT_LANGUAGE} from "@/shared/config";
 import TanStackQueryProvider from "@/app/store/TanStackQuery";
+import {useLogging} from "@/app/hooks/useLogging";
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.
 const pages = import.meta.glob('./sites/**/pages/**/*.tsx');
@@ -19,7 +20,6 @@ let SITE = ''
 const resolvePage = async (name: string) => {
     SITE = name.split('/')[0] === '' ? 'angelcar' : name.split('/')[0];
     const pageName = name.split('/')[1];
-
 
     // 언어 세팅
     const pathLocale = window.location.pathname.split('/')[1]; // URL에서 첫 번째 경로 추출
@@ -35,23 +35,33 @@ const resolvePage = async (name: string) => {
     return page.default;
 };
 
+const AppWrapper: React.FC<{ App: React.ElementType; props: any; site: string }> = ({
+    App,
+    props,
+    site,
+}) => {
+    useLogging(site);
+
+    return (
+        <TanStackQueryProvider>
+            <LanguageProvider site={site}>
+                <DeviceSizeProvider>
+                    <ShowPopUpProvider>
+                        <App {...props} />
+                    </ShowPopUpProvider>
+                </DeviceSizeProvider>
+            </LanguageProvider>
+        </TanStackQueryProvider>
+    );
+};
+
 // Inertia App 생성
 (async () => {
     await createInertiaApp({
         title: (title) => `${title}`,
         resolve: (name) => resolvePage(name),
         setup({ el, App, props }) {
-            createRoot(el).render(
-                <TanStackQueryProvider>
-                    <LanguageProvider site={SITE}>
-                        <DeviceSizeProvider>
-                            <ShowPopUpProvider>
-                                <App {...props} />
-                            </ShowPopUpProvider>
-                        </DeviceSizeProvider>
-                    </LanguageProvider>
-                </TanStackQueryProvider>
-            );
+            createRoot(el).render(<AppWrapper App={App} props={props} site={SITE}/>);
         },
         progress: {
             color: '#00A1E5',

@@ -5,8 +5,8 @@ import {apiClient} from "@/shared/api";
 // JSON 파일 로드 함수
 const loadsiteTranslations = async (locale: string, site: string) => {
     try {
-        const response = await apiClient(`/lang/${locale}/${site}.json`);
-        return response.data;
+        const { data } = await apiClient(`/lang/${locale}/${site}.json`);
+        return data;
     } catch (error) {
         console.error(`Error loading ${site}.json for locale "${locale}":`, error);
         return {};
@@ -16,8 +16,6 @@ const loadsiteTranslations = async (locale: string, site: string) => {
 // i18n 초기화 함수
 const initI18n = async (locale: string, site: string) => {
     const translations = await loadsiteTranslations(locale, site);
-
-    console.log(translations);
 
     await i18n.use(initReactI18next).init({
         resources: {
