@@ -9,6 +9,7 @@ return Application::configure(basePath: dirname(__DIR__))
         web: [
             __DIR__.'/../routes/web.php',
             __DIR__.'/../routes/web/angelcar.php',
+            __DIR__.'/../routes/web/angelcarAdmin.php',
             __DIR__.'/../routes/web/shinhan.php',
             __DIR__.'/../routes/web/fallback.php'
         ],
@@ -20,7 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
-
+         $middleware->alias([
+            'role' => \App\Http\Middleware\Role::class,
+        ]);
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
