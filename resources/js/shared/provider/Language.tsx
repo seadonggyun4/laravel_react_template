@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Inertia } from '@inertiajs/inertia';
-import initI18n from '@/app/utils/i18n';
+import initI18n from '@/shared/lib/i18n';
 import { SUPPORT_LANGUAGE } from '@/shared/config';
 
 interface Language {

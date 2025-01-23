@@ -4,7 +4,7 @@ import { setPrice } from "@/shared/lib";
 import { IoCall } from "react-icons/io5";
 import { FcMoneyTransfer } from "react-icons/fc";
 import { Link } from "@inertiajs/react";
-import { useShowPopUp } from "@/app/provider/ShowPopUp";
+import { useShowPopUp } from "@/shared/provider/ShowPopUp";
 
 interface Tag {
     class: string;

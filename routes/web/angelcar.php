@@ -9,25 +9,44 @@ Route::domain('angelcar.example.com')->group(function () {
     $supportedLanguages = ['ko', 'en'];
 
     foreach ($supportedLanguages as $lang) {
+
         Route::prefix($lang === 'ko' ? '' : $lang)->group(function () use ($lang) {
-            Route::get('/', function () use ($lang) {
-                return Inertia::render("angelcar/HomePage", generateMeta('/', $lang));
-            });
+            $data = generateMeta('angelcar.example.com', $lang);
 
-            Route::prefix('rentcar')->group(function () use ($lang) {
-                Route::get('/', function () use ($lang) {
-                    return redirect(($lang === 'ko' ? '' : '/' . $lang) . '/rentcar/reservation');
-                });
+            foreach ($data as $K => $V) {
 
-                Route::get('/reservation', function () use ($lang) {
-                    return Inertia::render("angelcar/RentCarPage");
-                });
+                if ($K == '/') {
+                    $meta = $V[$lang][0];
 
-                Route::get('/limited', function () use ($lang) {
-                    return Inertia::render("angelcar/LimitedCarPage");
-                });
-            });
+                    Route::get($V[$lang][0]['url'], function () use ($meta) {
+                        return Inertia::render($meta['view'], [
+                            'meta' => [
+                                'title' => $meta['title'],
+                                'description' => $meta['description'],
+                                'keywords' => $meta['keyword'],
+                            ],
+                        ]);
+                    });
+                } else {
+                    Route::prefix($K)->group(function () use ($lang, $V) {
+                        foreach ($V[$lang] as $K2 => $V2) {
+                            $meta = $V2;
+
+                            Route::get($V2['url'], function () use ($meta) {
+                                return Inertia::render($meta['view'], [
+                                    'meta' => [
+                                        'title' => $meta['title'],
+                                        'description' => $meta['description'],
+                                        'keywords' => $meta['keyword'],
+                                    ],
+                                ]);
+                            });
+                        }
+                    });
+                }
+            }
         });
     }
 });
+
 

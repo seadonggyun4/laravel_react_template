@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
-import { useLanguage } from "@/app/provider/Language";
+import { useLanguage } from "@/shared/provider/Language";
 import {SUPPORT_LANGUAGE} from "@/shared/config";
 
 interface HeaderProps {

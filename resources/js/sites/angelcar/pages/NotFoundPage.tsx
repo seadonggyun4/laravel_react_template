@@ -8,7 +8,7 @@ const NotFoundPage = () => {
 
 
     return (
-        <PageLayout title="제주도렌트카 | 제주엔젤카">
+        <PageLayout>
             <Box>
                 <Wrapper>
                     <Image src={NotFoundImg} alt="404 에러" />

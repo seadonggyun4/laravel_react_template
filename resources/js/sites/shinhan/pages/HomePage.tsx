@@ -5,14 +5,14 @@ import { bestPromotions } from "../../../../data";
 import Products from "@/widgets/reaction/Products";
 import WebSearSection from "@/widgets/web/WebSearch";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
-import { useDeviceSize } from "@/app/provider/DeviceSize";
+import { useDeviceSize } from "@/shared/provider/DeviceSize";
 import WebRecommended from "@/widgets/web/WebRecommended";
 
 export default function HomePage() {
     const { isMobile } = useDeviceSize();
 
     return (
-        <PageLayout title="제주도렌트카 | 제주엔젤카">
+        <PageLayout>
             <WebSearSection/>
             <WebRecommended />
             <Products text={{

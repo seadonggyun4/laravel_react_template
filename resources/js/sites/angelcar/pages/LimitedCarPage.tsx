@@ -4,7 +4,7 @@ import WebProductCard from "@/shared/ui/Molecule/web/WebProductCard";
 import {salesPromotions} from "../../../../data";
 import styled from "styled-components";
 import WebSearchSection from "@/widgets/web/WebSearch";
-import { useDeviceSize } from "@/app/provider/DeviceSize";
+import { useDeviceSize } from "@/shared/provider/DeviceSize";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
 import React from "react";
 
@@ -12,7 +12,7 @@ const LimitedCarPage = () => {
     const { isMobile } = useDeviceSize();
 
     return (
-        <PageLayout title="제주도렌트카 | 제주엔젤카" >
+        <PageLayout>
             <RentCarSection>
                 <WebSearchSection />
                 <Products text={{

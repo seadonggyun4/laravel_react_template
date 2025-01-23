@@ -7,7 +7,7 @@ import { bestPromotions } from "../../../../data";
 import Products from "@/widgets/reaction/Products";
 import WebSearSection from "@/widgets/web/WebSearch";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
-import { useDeviceSize } from "@/app/provider/DeviceSize";
+import { useDeviceSize } from "@/shared/provider/DeviceSize";
 import WebStoryVideo from "@/widgets/web/WebStoryVideo";
 import { events, swiperList } from "../../../../data";
 
@@ -15,7 +15,7 @@ export default function HomePage() {
     const { isMobile } = useDeviceSize();
 
     return (
-        <PageLayout title="제주도렌트카 | 제주엔젤카">
+        <PageLayout>
             <Swiper swiperList={swiperList}/>
             <WebSearSection/>
             <WebStoryVideo />

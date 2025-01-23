@@ -7,14 +7,14 @@ import WebSearchSection from "@/widgets/web/WebSearch";
 import WebRecommended from "@/widgets/web/WebRecommended";
 import MobileProductCard from "@/shared/ui/Molecule/mobile/MobileProductCard";
 import React from "react";
-import {useDeviceSize} from "@/app/provider/DeviceSize";
+import {useDeviceSize} from "@/shared/provider/DeviceSize";
 
 const RentCarPage = () => {
     const rentCars = bestPromotions.concat(premiumPromotions);
     const { isMobile } = useDeviceSize();
 
     return (
-        <PageLayout title="제주도렌트카 | 제주엔젤카" >
+        <PageLayout>
             <RentCarSection>
                 <WebSearchSection />
                 <WebRecommended />
