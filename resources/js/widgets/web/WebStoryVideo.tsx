@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import YoutubeCard from "@/sites/angelcar/ui/Molecule/YoutubeCard";
+import YoutubeCard from "@/shared/ui/Molecule/YoutubeCard";
 import React from "react";
 import { MOBILE_WIDTH } from "@/shared/config";
-import StorySelectBox from "@/sites/angelcar/ui/Molecule/StorySelectBox";
-import {stories} from "../../../../../../data";
-import useYoutube from "@/sites/angelcar/ui/hooks/useYoutube";
+import StorySelectBox from "@/shared/ui/Molecule/StorySelectBox";
+import {stories} from "../../../data";
+import useYoutube from "@/widgets/hooks/useYoutube";
 import { FaYoutube } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaBlogger } from "react-icons/fa";
