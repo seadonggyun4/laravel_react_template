@@ -99,7 +99,7 @@ const Header: React.FC<HeaderProps> = ({ navTree, headerItems }) => {
                     </RightSection>
                 </div>
             </HeaderBox>
-            <div>
+            <div onMouseLeave={() => setHoversed(firstPath === '/' ? null : firstPath)}>
                 <Nav>
                     <div>
                         {navTree && navTree.length > 0 && navTree.map((item) => {
