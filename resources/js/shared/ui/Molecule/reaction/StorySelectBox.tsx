@@ -22,7 +22,7 @@ const StorySelectBox: React.FC<StorySelectBoxProps> = ({ stories, setkey }) => {
 
     const renderMarqueeGroups = (reverse = false) => (
         <Marquee $reverse={reverse}>
-            {[...Array(2)].map((_, groupIndex) => (
+            {[...Array(3)].map((_, groupIndex) => (
                 <MarqueeGroup key={groupIndex}>
                     {stories.map((story, index) => (
                         <Item

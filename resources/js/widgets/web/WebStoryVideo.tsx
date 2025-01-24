@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import YoutubeCard from "@/shared/ui/Molecule/YoutubeCard";
+import YoutubeCard from "@/shared/ui/Molecule/reaction/YoutubeCard";
 import React from "react";
 import { MOBILE_WIDTH } from "@/shared/config";
-import StorySelectBox from "@/shared/ui/Molecule/StorySelectBox";
+import StorySelectBox from "@/shared/ui/Molecule/reaction/StorySelectBox";
 import {stories} from "../../../data";
 import useYoutube from "@/widgets/hooks/useYoutube";
 import { FaYoutube } from "react-icons/fa";

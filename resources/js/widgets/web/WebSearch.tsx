@@ -171,7 +171,7 @@ const SearchButton = styled.button`
     font-weight: bold;
 
     & > svg {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     &:hover {

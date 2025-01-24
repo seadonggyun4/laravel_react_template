@@ -11,7 +11,7 @@ import { ShowPopUpProvider } from '@/shared/provider/ShowPopUp';
 import {MenuProvider} from "@/shared/provider/SetMenu";
 import {SUPPORT_LANGUAGE} from "@/shared/config";
 import TanStackQueryProvider from "@/app/store/TanStackQuery";
-import {initializeLogging} from "@/app/func/initializeLogging";
+import {initializeLogging} from "@/app/services/initializeLogging";
 
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { apiClient } from "@/shared/api";
+import { loadJSON } from "@/shared/lib";
 import _ from "lodash";
 
 interface MenuProviderProps {
@@ -23,9 +24,9 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ site, children }) =>
     const fetchMenu = async () => {
         try {
             setLoading(true); // 로딩 시작
-            const { data } = await apiClient("/menu.json");
+
             // @ts-ignore
-            let menu = data.menu;
+            let { menu } = await loadJSON("/menu.json");
 
             // 1. 특정 사이트의 메뉴만 필터링
             menu = menu.filter((item: any) => item.site.split(".")[0] === site);

@@ -1,21 +1,11 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import {apiClient} from "@/shared/api";
-
-// JSON 파일 로드 함수
-const loadsiteTranslations = async (locale: string, site: string) => {
-    try {
-        const { data } = await apiClient(`/lang/${locale}/${site}.json`);
-        return data;
-    } catch (error) {
-        console.error(`Error loading ${site}.json for locale "${locale}":`, error);
-        return {};
-    }
-};
+import { loadJSON } from '@/shared/lib'
 
 // i18n 초기화 함수
 const initI18n = async (locale: string, site: string) => {
-    const translations = await loadsiteTranslations(locale, site);
+    const translations = await loadJSON(`/lang/${locale}/${site}.json`);
 
     await i18n.use(initReactI18next).init({
         resources: {

@@ -13,7 +13,7 @@ Route::domain('angelcar.example.com')->group(function () {
          // 관리자 홈 페이지 (auth 및 role:admin 미들웨어 적용)
          Route::middleware(['role:admin'])->group(function () {
              Route::get('/', function () {
-                 return Inertia::render("angelcarAdmin/HomePage");
+                 return Inertia::render("angelcarAdmin/HomePage" );
              })->name('admin.home');
          });
      });

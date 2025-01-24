@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Head, usePage } from '@inertiajs/react';
 import Header from '@/widgets/reaction/Header';
 import Footer from '@/widgets/reaction/Footer';
@@ -13,6 +13,9 @@ type PageProps = {
         title?: string;
         description?: string;
         keywords?: string;
+        url?: string;
+        view? : string;
+        token?: string;
     };
 };
 
@@ -21,6 +24,10 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const { props } = usePage<PageProps>();
     const { menu } = useMenu();
     const showPopUp = showCardDetail !== null;
+
+    useEffect(() => {
+        console.log(props?.meta)
+    }, [props])
 
     return (
         <PageWrapper>

@@ -27,6 +27,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode; site: strin
         initI18n(foundLocale.type, site); // i18n 초기화
     }, [site]);
 
+    // 사이트 언어 바꾸기
     const changeLanguage = (locale: Language) => {
         if (locale.type === currentLocale.type) return; // 동일 언어 선택 시 무시
 
