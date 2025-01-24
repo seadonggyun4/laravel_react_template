@@ -11,7 +11,7 @@ import { ShowPopUpProvider } from '@/shared/provider/ShowPopUp';
 import {MenuProvider} from "@/shared/provider/SetMenu";
 import {SUPPORT_LANGUAGE} from "@/shared/config";
 import TanStackQueryProvider from "@/app/store/TanStackQuery";
-import {useLogging} from "@/app/hooks/useLogging";
+import {initializeLogging} from "@/app/func/initializeLogging";
 
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.
@@ -42,8 +42,6 @@ const AppWrapper: React.FC<{ App: React.ElementType; props: any; site: string }>
     props,
     site,
 }) => {
-    useLogging(site);
-
     return (
         <TanStackQueryProvider>
             <LanguageProvider site={site}>
@@ -61,6 +59,7 @@ const AppWrapper: React.FC<{ App: React.ElementType; props: any; site: string }>
 
 // Inertia App 생성
 (async () => {
+    await initializeLogging(window.location.hostname)
     await createInertiaApp({
         title: (title) => `${title}`,
         resolve: (name) => resolvePage(name),
