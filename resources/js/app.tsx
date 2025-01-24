@@ -8,10 +8,10 @@ import { createRoot } from 'react-dom/client';
 import { LanguageProvider } from '@/shared/provider/Language';
 import { DeviceSizeProvider } from '@/shared/provider/DeviceSize';
 import { ShowPopUpProvider } from '@/shared/provider/ShowPopUp';
+import {MenuProvider} from "@/shared/provider/SetMenu";
 import {SUPPORT_LANGUAGE} from "@/shared/config";
 import TanStackQueryProvider from "@/app/store/TanStackQuery";
 import {useLogging} from "@/app/hooks/useLogging";
-import { useMenu } from '@/app/hooks/useMenu';
 
 
 // 모든 페이지 컴포넌트를 정적으로 가져온다.
@@ -43,16 +43,17 @@ const AppWrapper: React.FC<{ App: React.ElementType; props: any; site: string }>
     site,
 }) => {
     useLogging(site);
-    useMenu()
 
     return (
         <TanStackQueryProvider>
             <LanguageProvider site={site}>
-                <DeviceSizeProvider>
-                    <ShowPopUpProvider>
-                        <App {...props} />
-                    </ShowPopUpProvider>
-                </DeviceSizeProvider>
+                <MenuProvider site={site}>
+                    <DeviceSizeProvider>
+                        <ShowPopUpProvider>
+                            <App {...props} />
+                        </ShowPopUpProvider>
+                    </DeviceSizeProvider>
+                </MenuProvider>
             </LanguageProvider>
         </TanStackQueryProvider>
     );

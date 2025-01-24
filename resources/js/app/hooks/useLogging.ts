@@ -23,6 +23,7 @@ export const useLogging = (site: string) => {
 
         try {
             // await apiClient("/logs/batch", logsToSend, "POST"); // 배치 전송
+            console.log("에러 로그", logsToSend)
         } catch (error) {
             logQueue.push(...logsToSend); // 실패 시 다시 큐에 추가
         }

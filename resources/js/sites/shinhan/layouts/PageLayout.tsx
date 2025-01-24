@@ -26,7 +26,7 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     return (
         <PageWrapper>
-            <Head title={props.meta ? props.meta.title : 'NotFound'} />
+            <Head title={props.meta ? props.meta.title : '404'} />
             <Header navMenu={navMenu} headerItems={HEADER_ITEMS}/>
             <Main>
                 {children}

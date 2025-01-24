@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build && vite build --ssr",
+        "build": "vite build && vite build --ssr && rm -rf ./public/hot",
         "dev": "vite"
     },
     "devDependencies": {
@@ -11,6 +11,7 @@
         "@inertiajs/react": "^2.0.0",
         "@tailwindcss/forms": "^0.5.3",
         "@types/gsap": "^1.20.2",
+        "@types/lodash": "^4.17.14",
         "@types/node": "^22.10.5",
         "@types/react": "^19.0.6",
         "@types/react-dom": "^19.0.3",
@@ -31,6 +32,7 @@
         "date-fns": "^4.1.0",
         "gsap": "^3.12.7",
         "i18next": "^24.2.1",
+        "lodash": "^4.17.21",
         "react-datepicker": "^7.6.0",
         "react-i18next": "^15.4.0",
         "react-icons": "^5.4.0",

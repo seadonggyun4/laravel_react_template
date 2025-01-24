@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { Link, usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/shared/provider/Language";
-import {SUPPORT_LANGUAGE} from "@/shared/config";
+import { SUPPORT_LANGUAGE } from "@/shared/config";
 
 interface HeaderProps {
-    navMenu: { link: string; title: string }[]; // Navigation Menu 타입
-    navContentMenu?: Record<string, { link: string; title: string }[]>; // Navigation Content 타입 (옵션)
+    navTree: TreeNode[];
     headerItems: {
         logoLink?: string;
         options: {
@@ -17,38 +16,56 @@ interface HeaderProps {
     };
 }
 
+interface TreeNode {
+    id: number;
+    site: string;
+    url: string;
+    title: string;
+    description: string;
+    view: string;
+    keyword: string;
+    remember_token: string | null;
+    created_at: string | null;
+    updated_at: string | null;
+    group: string;
+    lang: string;
+    sort: number;
+    parent_idx: number;
+    children: TreeNode[];
+}
+
 const getFirstPath = (url: string, local:string): string => {
     const paths = url.split("/");
     const lang = local !== 'ko' ? local : null
     return !lang ? `/${paths[1]}` : (paths[2] ? `/${lang}/${paths[2]}`: `/${lang}`);
 };
 
-const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems }) => {
+const Header: React.FC<HeaderProps> = ({ navTree, headerItems }) => {
     const [hoversed, setHoversed] = useState<string | null>(null);
     const { url } = usePage();
     const { currentLocale, changeLanguage } = useLanguage();
-    const firstPath = getFirstPath(url, currentLocale.type);
     const { t } = useTranslation();
     const { logoLink, options } = headerItems;
+    const firstPath = getFirstPath(url, currentLocale.type);
 
-    // Active menu logic
-    const activeMenu: string | undefined = navContentMenu
-        ? Object.keys(navContentMenu).find((parentKey) =>
-            navContentMenu[parentKey]?.some((subItem) => subItem.link === url)
-        )
-        : undefined;
+    const menuLink = (group: string, url: string) => {
+        return  group === "/" ? url : `/${group}`
+    }
+    const subMenuLink = (group: string, url: string): string => {
+        return group === "/" ? url : `/${group}${url === '/' ? '' : url}`;
+    };
 
-    // Initial setup
+
     useEffect(() => {
-        setHoversed(firstPath);
-    }, [firstPath]);
+        setHoversed(firstPath === '/' ? null : firstPath);
+    }, [navTree]);
 
     return (
         <HeaderContainer>
             <HeaderBox>
                 <div>
                     <Logo>
-                        <Link href={navMenu[0].link}>
+                        <Link href={'/'}>
                             {logoLink ? (
                                 <img src={logoLink} alt="logo" />
                             ) : (
@@ -68,8 +85,13 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
                                     {currentLocale.title} ▾
                                 </button>
                                 <DropdownMenu>
-                                    {SUPPORT_LANGUAGE.map(item => (
-                                        <DropdownItem key={item.type} onClick={() => changeLanguage(item)}>{item.title}</DropdownItem>
+                                    {SUPPORT_LANGUAGE.map((item) => (
+                                        <DropdownItem
+                                            key={item.type}
+                                            onClick={() => changeLanguage(item)}
+                                        >
+                                            {item.title}
+                                        </DropdownItem>
                                     ))}
                                 </DropdownMenu>
                             </LanguageDropdown>
@@ -77,35 +99,46 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
                     </RightSection>
                 </div>
             </HeaderBox>
-            <div onMouseLeave={() => !activeMenu && setHoversed(null)}>
+            <div>
                 <Nav>
                     <div>
-                        {navMenu.map((item) => (
-                            <StyledLink
-                                key={item.link}
-                                href={item.link}
-                                onMouseOver={() => setHoversed(item.link)}
-                                className={firstPath === item.link ? "active" : ""}
-                            >
-                                {item.title}
-                            </StyledLink>
-                        ))}
+                        {navTree && navTree.length > 0 && navTree.map((item) => {
+                            const link = menuLink(item.group, item.url);
+                            return (
+                                <StyledLink
+                                    key={item.id}
+                                    href={link}
+                                    onMouseOver={() => setHoversed(link)}
+                                    className={
+                                        link === firstPath ? "active" : ""
+                                    }
+                                >
+                                    {item.title}
+                                </StyledLink>
+                            );
+                        })}
                     </div>
                 </Nav>
-                {navContentMenu &&
-                ((hoversed && navContentMenu[hoversed]) || (activeMenu && hoversed && navContentMenu[hoversed])) ? (
+                {hoversed && navTree && navTree.length > 0 &&
+                navTree.find((item) => (item.group === '/' ? item.group : `/${item.group}`) === hoversed)?.children.length ? (
                     <NavContent>
                         <ul>
-                            {navContentMenu[hoversed || activeMenu!]?.map((item) => (
-                                <li key={item.link}>
-                                    <SubLink
-                                        href={item.link}
-                                        className={url === item.link ? "active" : ""}
-                                    >
-                                        {item.title}
-                                    </SubLink>
-                                </li>
-                            ))}
+                            {navTree
+                                .find((item) => (item.group === '/' ? item.group : `/${item.group}`) === hoversed)
+                                ?.children.map((child) => (
+                                    <li key={child.id}>
+                                        <SubLink
+                                            href={subMenuLink(child.group, child.url)}
+                                            className={
+                                                url === subMenuLink(child.group, child.url)
+                                                    ? "active"
+                                                    : ""
+                                            }
+                                        >
+                                            {child.title}
+                                        </SubLink>
+                                    </li>
+                                ))}
                         </ul>
                     </NavContent>
                 ) : null}
@@ -113,7 +146,6 @@ const Header: React.FC<HeaderProps> = ({ navMenu, navContentMenu, headerItems })
         </HeaderContainer>
     );
 };
-
 
 // Styled widgets
 const HeaderContainer = styled.header`
