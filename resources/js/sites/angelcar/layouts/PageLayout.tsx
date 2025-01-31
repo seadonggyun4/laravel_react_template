@@ -25,10 +25,6 @@ const PageLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const { menu } = useMenu();
     const showPopUp = showCardDetail !== null;
 
-    useEffect(() => {
-        console.log(props?.meta)
-    }, [props])
-
     return (
         <PageWrapper>
             <Head title={props.meta ? `엔젤렌터카 | ${props.meta.title}` : '엔젤렌터카 | 404'} />

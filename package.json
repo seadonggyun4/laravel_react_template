@@ -2,7 +2,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build && vite build --ssr && rm -rf ./public/hot",
+        "build": "vite build && rm -rf ./public/hot",
         "dev": "vite"
     },
     "devDependencies": {
@@ -36,6 +36,7 @@
         "react-datepicker": "^7.6.0",
         "react-i18next": "^15.4.0",
         "react-icons": "^5.4.0",
+        "react-router-dom": "^7.1.4",
         "styled-components": "^6.1.14",
         "swiper": "^11.2.1"
     }
